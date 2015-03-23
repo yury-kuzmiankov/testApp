@@ -1,0 +1,23 @@
+/* colors directive */
+colors ul li{
+	display: inline-block;
+	height: 100px;
+	width: 50px;
+	margin-right: 20px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+colors ul li.selected{
+	border: 3px solid #4285f4;
+	border-radius: 5px;
+}
+nvd3-pie-chart{
+	display: block;
+}
+
+nvd3-pie-chart svg{
+	display: inline-block;
+	width: 500px;
+	height: 500px;
+}

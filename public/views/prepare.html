@@ -1,0 +1,9 @@
+<div class="panel-heading">Тест # <span ng-bind="progress + 1"></span>, Воспрос <span ng-bind="questionId + 1"></span></div>
+<div class="panel-body text-center">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="prepareDescription" ng-bind="question.prepare.description"></div>
+			<a class="btn btn-lg btn-success" ng-href="#/test/{{progress}}/question/{{questionId}}/options" ng-bind="question.prepare.controlTitle"></a>
+		</div>
+	</div>
+</div>

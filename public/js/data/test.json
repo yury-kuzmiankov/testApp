@@ -1,0 +1,88 @@
+{
+  "currentProgress" : 0,
+  "tests" : [
+	{
+	  "questions" : [
+		{
+		  "type" : "colors",
+		  "prepare" : {
+			"description" : "Выберите симпатичные цвета",
+			"controlType" : "button",
+			"controlTitle" : "OK"
+		  },
+		  "description" : "Выберите несколько цветов",
+		  "options" : [
+			{
+			  "color" : "#800080"
+			},
+			{
+			  "color" : "#000080"
+			},
+			{
+			  "color" : "#964a06"
+			},
+			{
+			  "color" : "#ff0000"
+			},
+			{
+			  "color" : "#808080"
+			},
+			{
+			  "color" : "#ffff00"
+			},
+			{
+			  "color" : "#000000"
+			},
+			{
+			  "color" : "#008000"
+			}
+		  ],
+		  "doneInstruction" : "Нажмите ОК",
+		  "controlType" : "button",
+		  "controlTitle" : "OK",
+		  "result" : {
+			"type" : "pieChart"
+		  }
+		},
+		{
+		  "type" : "colors",
+		  "prepare" : {
+			"description" : "Выберите несимпатичные цвета",
+			"controlType" : "button",
+			"controlTitle" : "OK"
+		  },
+		  "description" : "Выберите несколько цветов",
+		  "options" : [
+			{
+			  "color" : "#008000"
+			},
+			{
+			  "color" : "#964a06"
+			},
+			{
+			  "color" : "#800080"
+			},
+			{
+			  "color" : "#808080"
+			},
+			{
+			  "color" : "#ff0000"
+			},
+			{
+			  "color" : "#000080"
+			},
+			{
+			  "color" : "#ffff00"
+			},
+			{
+			  "color" : "#000000"
+			}
+		  ],
+		  "doneInstruction" : "Нажмите ОК",
+		  "controlType" : "button",
+		  "controlTitle" : "OK"
+		}
+	  ]
+	}
+  ]
+}
