@@ -8,7 +8,7 @@
  * Controller of the yomanAppApp
  */
 angular.module('libraryApp')
-    .directive('digits', function () {
+    .directive('digits', function (randomService) {
         return {
             restrict: "E",
             scope: {
@@ -16,39 +16,47 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/digits.html',
-            controller: function($scope, $element) {
-                var getMinValue = function(){
-                    var color = $scope.question.additional.color;
-                    var min = null;
-                    angular.forEach($scope.question.options, function(row) {
-                        angular.forEach(row, function(cell) {
-                            if ((cell.color === color) && (min === null || min > parseInt(cell.content, 10))) {
-                                min = parseInt(cell.content, 10);
-                            }
+            controller: function($scope, $element, $interval, $location) {
+                $scope.current = 0;
+                $scope.startTime = new Date().getTime();
+
+               $scope.timer = $interval(function(){
+                    $scope.handleResults();
+                }, 60000);
+
+                $scope.$on('$destroy', function() {
+                    $interval.cancel($scope.timer);
+                });
+
+                var generateArray = function(color){
+                    var array = [];
+                    for(var i = 0; i < 24; i++){
+                        array.push({
+                           color : color,
+                           content : i + 1
                         });
-                    });
-                    return min;
+                    }
+                    return array;
                 };
 
-                $scope.getNextValue = function(current){
-                    var color = $scope.question.additional.color;
-                    var min = null;
-                    angular.forEach($scope.question.options, function(row) {
-                        angular.forEach(row, function(cell) {
-                            var value = parseInt(cell.content, 10);
-                            if ((cell.color === color) && ((min === null || min > value) && current < value)) {
-                                min = value;
-                            }
-                        });
-                    });
-                    return min;
-                };
+                var initMatrix = function(){
+                    var redArray = generateArray("red");
+                    var yellowArray = generateArray("yellow");
+                    var array = randomService.shuffle(redArray.concat(yellowArray));
+                    var index = 0;
+                    for(var i = 0; i < 4; i++){
+                        $scope.question.options.push([]);
+                        for(var j = 0; j < 12; j++){
+                            $scope.question.options[i].push(array[index]);
+                            index++;
+                        }
+                    }
+                }();
 
                 $scope.error = "";
 
-                $scope.minValue = getMinValue();
-
                 $scope.deselectAll = function() {
+                    $scope.current = 0;
                     angular.forEach($scope.question.options, function(row) {
                         angular.forEach(row, function(cell) {
                             cell.isSelected = false;
@@ -58,10 +66,10 @@ angular.module('libraryApp')
 
                 $scope.selectCell = function() {
                     $scope.error = "";
-                    if(this.cell.color === $scope.question.additional.color){
+                    if(this.cell.color === $scope.question.additional.type){
                         if(!this.cell.isSelected){
                             var value = parseInt(this.cell.content, 10);
-                            if($scope.minValue === value || ($scope.getNextValue($scope.current) === value)){
+                            if($scope.current + 1 === value){
                                 $scope.current = value;
                                 this.cell.isSelected = true;
                             }else{
@@ -83,8 +91,12 @@ angular.module('libraryApp')
                             }
                         });
                     });
+                    $scope.question.time =  (new Date().getTime() - $scope.startTime) / 1000;
                     $scope.question.results = selectedCount / $scope.question.options.length;
+                    $location.path($scope.nextaction);
                 };
+
+
             }
         }
     });

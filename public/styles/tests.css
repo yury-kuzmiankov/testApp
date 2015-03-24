@@ -9,8 +9,7 @@ colors ul li{
 }
 
 colors ul li.selected{
-	border: 3px solid #4285f4;
-	border-radius: 5px;
+	display: none;
 }
 
 digits table{
@@ -30,6 +29,42 @@ digits td.selected{
 	border: 3px solid #4285f4;
 	border-radius: 5px;
 }
+
+figures li{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin: 20px 50px;
+    cursor: pointer;
+}
+
+figures li.selected{
+    visibility: hidden;
+}
+
+figures .square{
+    background: blue;
+}
+
+figures .rectangle{
+    background: blue;
+    width: 100px;
+}
+
+figures .triangle{
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 200px solid blue;
+}
+
+figures .circle{
+     background: blue;
+     -moz-border-radius:100px;
+     -webkit-border-radius: 100px;
+     border-radius: 100px;
+ }
 
 nvd3-pie-chart{
 	display: block;

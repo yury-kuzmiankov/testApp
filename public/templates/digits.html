@@ -9,6 +9,7 @@
     </table>
     <p class="text-error" ng-bind="error"></p>
     <hr>
-    <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
+    <div class="doneInstruction">Вам необходимо найти по возрастанию числа на <span ng-bind="question.additional.description"></span> фоне</div>
+    <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()"></a>
   </div>
 </div>

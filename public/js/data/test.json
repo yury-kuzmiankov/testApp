@@ -5,12 +5,10 @@
 	  "questions" : [
 		{
 		  "type" : "colors",
-		  "prepare" : {
-			"description" : "Выберите симпатичные цвета",
-			"controlType" : "button",
-			"controlTitle" : "OK"
-		  },
-		  "description" : "Выберите несколько цветов",
+          "additional" : {
+            "type" : "good",
+            "description" : "СИМПАТИЧНЫЕ"
+          },
 		  "options" : [
 			{
 			  "color" : "#800080"
@@ -37,494 +35,157 @@
 			  "color" : "#008000"
 			}
 		  ],
-		  "doneInstruction" : "Нажмите ОК",
-		  "controlType" : "button",
-		  "controlTitle" : "OK",
-		  "result" : {
-			"type" : "pieChart"
-		  }
-		},
-		{
-		  "type" : "colors",
-		  "prepare" : {
-			"description" : "Выберите несимпатичные цвета",
-			"controlType" : "button",
-			"controlTitle" : "OK"
-		  },
-		  "description" : "Выберите несколько цветов",
-		  "options" : [
-			{
-			  "color" : "#008000"
-			},
-			{
-			  "color" : "#964a06"
-			},
-			{
-			  "color" : "#800080"
-			},
-			{
-			  "color" : "#808080"
-			},
-			{
-			  "color" : "#ff0000"
-			},
-			{
-			  "color" : "#000080"
-			},
-			{
-			  "color" : "#ffff00"
-			},
-			{
-			  "color" : "#000000"
-			}
-		  ],
-		  "doneInstruction" : "Нажмите ОК",
-		  "controlType" : "button",
 		  "controlTitle" : "OK"
 		}
 	  ]
 	},
+    {
+      "questions" : [
+        {
+          "type" : "colors",
+          "additional" : {
+            "type" : "bad",
+            "description" : "НЕСИМПАТИЧНЫЕ"
+          },
+          "options" : [
+            {
+              "color" : "#008000"
+            },
+            {
+              "color" : "#964a06"
+            },
+            {
+              "color" : "#800080"
+            },
+            {
+              "color" : "#808080"
+            },
+            {
+              "color" : "#ff0000"
+            },
+            {
+              "color" : "#000080"
+            },
+            {
+              "color" : "#ffff00"
+            },
+            {
+              "color" : "#000000"
+            }
+          ],
+          "controlTitle" : "OK"
+        }
+       ]
+    },
 	{
 	  "questions" : [
 		{
 		  "type" : "digits",
 		  "additional" : {
-			"color" : "yellow"
+			"type" : "yellow",
+            "description" : "ЖЁЛТОМ"
 		  },
 		  "prepare" : {
-			"description" : "Выберите числа по возрастанию",
-			"controlType" : "button",
+			"description" : "Вам будет предъявлена таблица (желто-красная) с цифрами. Нажатием левой кнопки мыши <выбивайте> числа по возрастанию в соответствии с инструкцией, которая будет приведена под таблицей. Помните, что ошибка в последовательности возвращает Вас в исходное положение. Если Вы поняли инструкцию и готовы приступить к выполнению задания, нажмите кнопку [ОК]",
 			"controlTitle" : "OK"
 		  },
-		  "description" : "Выберите цифры на жёлтом фоне",
-		  "options" : [
-			[
-			  {
-				"content" : "10",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "12",
-				"color" : "red"
-			  },
-			  {
-				"content" : "22",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "20",
-				"color" : "red"
-			  },
-			  {
-				"content" : "10",
-				"color" : "red"
-			  },
-			  {
-				"content" : "23",
-				"color" : "red"
-			  },
-			  {
-				"content" : "15",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "15",
-				"color" : "red"
-			  },
-			  {
-				"content" : "19",
-				"color" : "red"
-			  },
-			  {
-				"content" : "17",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "11",
-				"color" : "red"
-			  },
-			  {
-				"content" : "3",
-				"color" : "red"
-			  }
-			],
-			[
-			  {
-				"content" : "1",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "11",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "24",
-				"color" : "red"
-			  },
-			  {
-				"content" : "5",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "7",
-				"color" : "red"
-			  },
-			  {
-				"content" : "24",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "13",
-				"color" : "red"
-			  },
-			  {
-				"content" : "22",
-				"color" : "red"
-			  },
-			  {
-				"content" : "18",
-				"color" : "red"
-			  },
-			  {
-				"content" : "8",
-				"color" : "red"
-			  },
-			  {
-				"content" : "12",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "13",
-				"color" : "yellow"
-			  }
-			],
-			[
-			  {
-				"content" : "17",
-				"color" : "red"
-			  },
-			  {
-				"content" : "5",
-				"color" : "red"
-			  },
-			  {
-				"content" : "6",
-				"color" : "red"
-			  },
-			  {
-				"content" : "4",
-				"color" : "red"
-			  },
-			  {
-				"content" : "21",
-				"color" : "red"
-			  },
-			  {
-				"content" : "7",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "16",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "3",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "14",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "1",
-				"color" : "red"
-			  },
-			  {
-				"content" : "2",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "19",
-				"color" : "yellow"
-			  }
-			],
-			[
-			  {
-				"content" : "9",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "20",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "8",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "21",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "4",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "14",
-				"color" : "red"
-			  },
-			  {
-				"content" : "16",
-				"color" : "red"
-			  },
-			  {
-				"content" : "6",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "9",
-				"color" : "red"
-			  },
-			  {
-				"content" : "23",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "2",
-				"color" : "red"
-			  },
-			  {
-				"content" : "18",
-				"color" : "yellow"
-			  }
-			]
-		  ],
-		  "doneInstruction" : "Нажмите ОК",
-		  "controlType" : "button",
+          "options" : [
+          ],
 		  "controlTitle" : "OK"
 		}
 	  ]
 	},
-	{
-	  "questions" : [
-		{
-		  "type" : "digits",
-		  "additional" : {
-			"color" : "red"
-		  },
-		  "prepare" : {
-			"description" : "Выберите числа по возрастанию",
-			"controlType" : "button",
-			"controlTitle" : "OK"
-		  },
-		  "description" : "Выберите цифры на красном фоне",
-		  "options" : [
-			[
-			  {
-				"content" : "18",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "19",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "19",
-				"color" : "red"
-			  },
-			  {
-				"content" : "3",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "23",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "20",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "11",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "8",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "15",
-				"color" : "red"
-			  },
-			  {
-				"content" : "1",
-				"color" : "red"
-			  },
-			  {
-				"content" : "9",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "20",
-				"color" : "red"
-			  }
-			],
-			[
-			  {
-				"content" : "13",
-				"color" : "red"
-			  },
-			  {
-				"content" : "12",
-				"color" : "red"
-			  },
-			  {
-				"content" : "16",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "17",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "15",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "5",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "2",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "4",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "7",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "14",
-				"color" : "red"
-			  },
-			  {
-				"content" : "12",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "10",
-				"color" : "yellow"
-			  }
-			],
-			[
-			  {
-				"content" : "18",
-				"color" : "red"
-			  },
-			  {
-				"content" : "10",
-				"color" : "red"
-			  },
-			  {
-				"content" : "22",
-				"color" : "red"
-			  },
-			  {
-				"content" : "5",
-				"color" : "red"
-			  },
-			  {
-				"content" : "3",
-				"color" : "red"
-			  },
-			  {
-				"content" : "13",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "6",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "24",
-				"color" : "red"
-			  },
-			  {
-				"content" : "6",
-				"color" : "red"
-			  },
-			  {
-				"content" : "14",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "21",
-				"color" : "red"
-			  },
-			  {
-				"content" : "17",
-				"color" : "red"
-			  }
-			],
-			[
-			  {
-				"content" : "9",
-				"color" : "red"
-			  },
-			  {
-				"content" : "7",
-				"color" : "red"
-			  },
-			  {
-				"content" : "4",
-				"color" : "red"
-			  },
-			  {
-				"content" : "1",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "22",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "16",
-				"color" : "red"
-			  },
-			  {
-				"content" : "21",
-				"color" : "yellow"
-			  },
-			  {
-				"content" : "8",
-				"color" : "red"
-			  },
-			  {
-				"content" : "2",
-				"color" : "red"
-			  },
-			  {
-				"content" : "23",
-				"color" : "red"
-			  },
-			  {
-				"content" : "11",
-				"color" : "red"
-			  },
-			  {
-				"content" : "24",
-				"color" : "yellow"
-			  }
-			]
-		  ],
-		  "doneInstruction" : "Нажмите ОК",
-		  "controlType" : "button",
-		  "controlTitle" : "OK"
-		}
-	  ]
-	}
+    {
+      "questions" : [
+        {
+          "type" : "digits",
+          "additional" : {
+            "type" : "red",
+            "description" : "КРАСНОМ"
+          },
+          "prepare" : {
+            "description" : "Вам будет предъявлена таблица (желто-красная) с цифрами. Нажатием левой кнопки мыши <выбивайте> числа по возрастанию в соответствии с инструкцией, которая будет приведена под таблицей. Помните, что ошибка в последовательности возвращает Вас в исходное положение. Если Вы поняли инструкцию и готовы приступить к выполнению задания, нажмите кнопку [ОК]",
+            "controlTitle" : "OK"
+          },
+          "options" : [
+          ],
+          "controlTitle" : "OK"
+        }
+      ]
+    },
+    {
+      "questions" : [
+        {
+          "type" : "figures",
+          "additional" : {
+            "type" : "good"
+          },
+          "prepare" : {
+            "description" : "Выберите из предъявленных Вам фигур наиболее для Вас СИМПАТИЧНЫЕ. Для этого нажимайте на выбранной Вами фигуре левой кнопкой мыши. После того, как Вы выбрали все СИМПАТИЧНЫЕ для ВАС фигуры, нажмите кнопку [OK]. Если вы поняли инструкцию и готовы приступить к выполнению задания, нажмите кнопку [OK]. Вы можете выбрать любое число фигур (от 1 до 5)",
+            "controlTitle" : "OK"
+          },
+          "options" : [
+            {
+              "type" : "square"
+            },
+            {
+              "type" : "triangle"
+            },
+            {
+              "type" : "line"
+            },
+            {
+              "type" : "rectangle"
+            },
+            {
+              "type" : "circle"
+            }
+          ],
+          "controlTitle" : "OK"
+        }
+      ]
+    },
+    {
+      "questions" : [
+        {
+          "type" : "figures",
+          "additional" : {
+            "type" : "bad",
+            "description" : "НЕСИМПАТИЧНЫЕ"
+          },
+          "prepare" : {
+            "description" : "Выберите из предъявленных Вам фигур наиболее для Вас НЕСИМПАТИЧНЫЕ. Для этого нажимайте на выбранной Вами фигуре левой кнопкой мыши. После того, как Вы выбрали все НЕСИМПАТИЧНЫЕ для ВАС фигуры, нажмите кнопку [OK]. Если вы поняли инструкцию и готовы приступить к выполнению задания, нажмите кнопку [OK]. Вы можете выбрать любое число фигур (от 1 до 5)",
+            "controlTitle" : "OK"
+          },
+          "options" : [
+            {
+              "type" : "square"
+            },
+            {
+              "type" : "triangle"
+            },
+            {
+              "type" : "line"
+            },
+            {
+              "type" : "rectangle"
+            },
+            {
+              "type" : "circle"
+            }
+          ],
+          "controlTitle" : "OK"
+        }
+      ]
+    },
+    {
+      "questions" : [
+        {
+          "type" : "phrase",
+          "options" : [],
+          "controlTitle" : "OK"
+        }
+      ]
+    }
   ]
 }

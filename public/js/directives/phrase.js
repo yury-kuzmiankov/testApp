@@ -8,22 +8,19 @@
  * Controller of the yomanAppApp
  */
 angular.module('libraryApp')
-  .directive('colors', function () {
+  .directive('phrase', function (randomService) {
         return {
             restrict: "E",
             scope: {
                 question : '=',
                 nextaction : '@'
             },
-            templateUrl: 'templates/colors.html',
+            templateUrl: 'templates/phrase.html',
             controller: function($scope, $element) {
-                $scope.priority = 0;
-                $scope.selectColor = function() {
-                    if(!this.option.isSelected){
-                        this.option.isSelected = true;
-                        this.option.priority = $scope.priority;
-                        $scope.priority++;
-                    }
+                $scope.phrase = randomService.getPhrase(11);
+                $scope.typed = "";
+                $scope.checkKey = function(){
+                    var i = 0;
                 };
                 $scope.handleResults = function() {
                     var selectedCount = 0;

@@ -17,11 +17,12 @@ angular.module('libraryApp')
             },
             templateUrl: 'templates/figures.html',
             controller: function($scope, $element) {
+                $scope.priority = 0;
                 $scope.selectFigure = function() {
-                    if(this.option.isSelected){
-                        this.option.isSelected = false;
-                    }else{
+                    if(!this.option.isSelected){
                         this.option.isSelected = true;
+                        this.option.priority = $scope.priority;
+                        $scope.priority++;
                     }
                 };
                 $scope.handleResults = function() {

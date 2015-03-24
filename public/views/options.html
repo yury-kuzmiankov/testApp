@@ -7,11 +7,14 @@
 					<colors question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></colors>
 				</div>
 				<div ng-switch-when="digits">
-					<digits question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></digits>
+					<digits question="question" nextaction="/test/{{progress}}/question/{{questionId}}/result"></digits>
 				</div>
 				<div ng-switch-when="figures">
 					<figures question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></figures>
 				</div>
+                <div ng-switch-when="phrase">
+                    <phrase question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></phrase>
+                </div>
 			</div>
 		</div>
 	</div>

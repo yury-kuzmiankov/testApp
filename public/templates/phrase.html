@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading">На клавиатуре как можно быстрее наберите знаки, которые вы видите. <span class="text-error">Ошибка при вводе символов приводит к возобновлению программы!</span></div>
+  <div class="panel-body">
+    <div class="phrase"><span ng-repeat="symbol in phrase track by $index">{{ symbol }}</span></div>
+    <input type="text" ng-focus="true" ng-model="typed" ng-keyup="checkKey()">
+    <hr>
+    <div class="doneInstruction">По окончании ввода нажмите [ОК]</div>
+    <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
+  </div>
+</div>

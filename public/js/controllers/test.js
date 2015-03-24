@@ -57,8 +57,8 @@ angular.module('libraryApp')
         var redirectToView = function(data){
             var nextView = null;
             switch (data.viewType) {
-                case 'preview':{
-                    nextView = 'option';
+                case 'prepare':{
+                    nextView = 'options';
                     break;
                 }
                 case 'option':{

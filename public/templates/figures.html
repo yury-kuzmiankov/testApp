@@ -2,8 +2,7 @@
   <div class="panel-heading" ng-bind="question.description"></div>
   <div class="panel-body">
     <ul>
-      <li ng-repeat="option in question.options" data-index = "{{$index}}" ng-click="selectColor()" ng-class="option.isSelected ? 'selected' : ''"
-          ng-style="{'background-color' : option.color}"></li>
+      <li ng-repeat="option in question.options" data-index = "{{$index}}" ng-click="selectFigure()" ng-class="[option.type, option.isSelected ? 'selected' : '']"></li>
     </ul>
     <hr>
     <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
