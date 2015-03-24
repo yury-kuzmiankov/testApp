@@ -79,7 +79,7 @@ angular.module('libraryApp')
 
         var redirectToTest = function(data){
             if(data.progress < $scope.data.tests.length - 1){
-                $location.path("/test/" + (data.progress + 1) + "/question/0/preview");
+                $location.path("/test/" + (parseInt(data.progress, 10) + 1) + "/question/0/prepare");
             }else{
                 redirectToMainResult({
                     progress : data.progress

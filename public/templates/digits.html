@@ -7,6 +7,7 @@
             ng-style="{'background-color' : cell.color}" ng-bind="cell.content"></td>
       </tr>
     </table>
+    <p class="text-error" ng-bind="error"></p>
     <hr>
     <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
   </div>

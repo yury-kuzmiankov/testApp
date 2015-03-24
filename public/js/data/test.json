@@ -88,6 +88,9 @@
 	  "questions" : [
 		{
 		  "type" : "digits",
+		  "additional" : {
+			"color" : "yellow"
+		  },
 		  "prepare" : {
 			"description" : "Выберите числа по возрастанию",
 			"controlType" : "button",
@@ -306,6 +309,9 @@
 	  "questions" : [
 		{
 		  "type" : "digits",
+		  "additional" : {
+			"color" : "red"
+		  },
 		  "prepare" : {
 			"description" : "Выберите числа по возрастанию",
 			"controlType" : "button",
