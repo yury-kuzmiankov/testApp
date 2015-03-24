@@ -1,0 +1,4 @@
+<div ng-show="isPrepare">
+	<div class="prepareDescription" ng-bind="test.questions[currentNumber].prepareStatement.description"></div>
+	<a class="btn btn-lg btn-success" ng-click="nextQuestion(false)" ng-bind="test.questions[currentNumber].prepareStatement.controlTitle"></a>
+</div>
