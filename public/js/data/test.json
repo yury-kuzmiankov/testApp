@@ -83,6 +83,442 @@
 		  "controlTitle" : "OK"
 		}
 	  ]
+	},
+	{
+	  "questions" : [
+		{
+		  "type" : "digits",
+		  "prepare" : {
+			"description" : "Выберите числа по возрастанию",
+			"controlType" : "button",
+			"controlTitle" : "OK"
+		  },
+		  "description" : "Выберите цифры на жёлтом фоне",
+		  "options" : [
+			[
+			  {
+				"content" : "10",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "12",
+				"color" : "red"
+			  },
+			  {
+				"content" : "22",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "20",
+				"color" : "red"
+			  },
+			  {
+				"content" : "10",
+				"color" : "red"
+			  },
+			  {
+				"content" : "23",
+				"color" : "red"
+			  },
+			  {
+				"content" : "15",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "15",
+				"color" : "red"
+			  },
+			  {
+				"content" : "19",
+				"color" : "red"
+			  },
+			  {
+				"content" : "17",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "11",
+				"color" : "red"
+			  },
+			  {
+				"content" : "3",
+				"color" : "red"
+			  }
+			],
+			[
+			  {
+				"content" : "1",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "11",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "24",
+				"color" : "red"
+			  },
+			  {
+				"content" : "5",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "7",
+				"color" : "red"
+			  },
+			  {
+				"content" : "24",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "13",
+				"color" : "red"
+			  },
+			  {
+				"content" : "22",
+				"color" : "red"
+			  },
+			  {
+				"content" : "18",
+				"color" : "red"
+			  },
+			  {
+				"content" : "8",
+				"color" : "red"
+			  },
+			  {
+				"content" : "12",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "13",
+				"color" : "yellow"
+			  }
+			],
+			[
+			  {
+				"content" : "17",
+				"color" : "red"
+			  },
+			  {
+				"content" : "5",
+				"color" : "red"
+			  },
+			  {
+				"content" : "6",
+				"color" : "red"
+			  },
+			  {
+				"content" : "4",
+				"color" : "red"
+			  },
+			  {
+				"content" : "21",
+				"color" : "red"
+			  },
+			  {
+				"content" : "7",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "16",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "3",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "14",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "1",
+				"color" : "red"
+			  },
+			  {
+				"content" : "2",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "19",
+				"color" : "yellow"
+			  }
+			],
+			[
+			  {
+				"content" : "9",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "20",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "8",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "21",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "4",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "14",
+				"color" : "red"
+			  },
+			  {
+				"content" : "16",
+				"color" : "red"
+			  },
+			  {
+				"content" : "6",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "9",
+				"color" : "red"
+			  },
+			  {
+				"content" : "23",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "2",
+				"color" : "red"
+			  },
+			  {
+				"content" : "18",
+				"color" : "yellow"
+			  }
+			]
+		  ],
+		  "doneInstruction" : "Нажмите ОК",
+		  "controlType" : "button",
+		  "controlTitle" : "OK"
+		}
+	  ]
+	},
+	{
+	  "questions" : [
+		{
+		  "type" : "digits",
+		  "prepare" : {
+			"description" : "Выберите числа по возрастанию",
+			"controlType" : "button",
+			"controlTitle" : "OK"
+		  },
+		  "description" : "Выберите цифры на красном фоне",
+		  "options" : [
+			[
+			  {
+				"content" : "18",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "19",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "19",
+				"color" : "red"
+			  },
+			  {
+				"content" : "3",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "23",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "20",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "11",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "8",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "15",
+				"color" : "red"
+			  },
+			  {
+				"content" : "1",
+				"color" : "red"
+			  },
+			  {
+				"content" : "9",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "20",
+				"color" : "red"
+			  }
+			],
+			[
+			  {
+				"content" : "13",
+				"color" : "red"
+			  },
+			  {
+				"content" : "12",
+				"color" : "red"
+			  },
+			  {
+				"content" : "16",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "17",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "15",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "5",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "2",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "4",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "7",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "14",
+				"color" : "red"
+			  },
+			  {
+				"content" : "12",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "10",
+				"color" : "yellow"
+			  }
+			],
+			[
+			  {
+				"content" : "18",
+				"color" : "red"
+			  },
+			  {
+				"content" : "10",
+				"color" : "red"
+			  },
+			  {
+				"content" : "22",
+				"color" : "red"
+			  },
+			  {
+				"content" : "5",
+				"color" : "red"
+			  },
+			  {
+				"content" : "3",
+				"color" : "red"
+			  },
+			  {
+				"content" : "13",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "6",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "24",
+				"color" : "red"
+			  },
+			  {
+				"content" : "6",
+				"color" : "red"
+			  },
+			  {
+				"content" : "14",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "21",
+				"color" : "red"
+			  },
+			  {
+				"content" : "17",
+				"color" : "red"
+			  }
+			],
+			[
+			  {
+				"content" : "9",
+				"color" : "red"
+			  },
+			  {
+				"content" : "7",
+				"color" : "red"
+			  },
+			  {
+				"content" : "4",
+				"color" : "red"
+			  },
+			  {
+				"content" : "1",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "22",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "16",
+				"color" : "red"
+			  },
+			  {
+				"content" : "21",
+				"color" : "yellow"
+			  },
+			  {
+				"content" : "8",
+				"color" : "red"
+			  },
+			  {
+				"content" : "2",
+				"color" : "red"
+			  },
+			  {
+				"content" : "23",
+				"color" : "red"
+			  },
+			  {
+				"content" : "11",
+				"color" : "red"
+			  },
+			  {
+				"content" : "24",
+				"color" : "yellow"
+			  }
+			]
+		  ],
+		  "doneInstruction" : "Нажмите ОК",
+		  "controlType" : "button",
+		  "controlTitle" : "OK"
+		}
+	  ]
 	}
   ]
 }

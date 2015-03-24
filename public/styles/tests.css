@@ -12,6 +12,25 @@ colors ul li.selected{
 	border: 3px solid #4285f4;
 	border-radius: 5px;
 }
+
+digits table{
+	border-spacing: 7px;
+	border-collapse: separate;
+	margin: 0 auto;
+}
+
+digits td{
+	padding: 10px;
+	font-size: 20px;
+	text-align: center;
+	border: 3px solid #fff;
+}
+
+digits td.selected{
+	border: 3px solid #4285f4;
+	border-radius: 5px;
+}
+
 nvd3-pie-chart{
 	display: block;
 }
