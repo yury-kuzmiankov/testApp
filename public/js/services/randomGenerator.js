@@ -37,7 +37,9 @@ angular.module('libraryApp')
             var possible = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789";
 
             for(var i = 0; i < length; i++)
-                text.push(possible.charAt(Math.floor(Math.random() * possible.length)));
+                text.push({
+                    char : possible.charAt(Math.floor(Math.random() * possible.length))
+                });
             return text;
         }
 

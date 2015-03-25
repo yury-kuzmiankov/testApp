@@ -15,6 +15,9 @@
                 <div ng-switch-when="phrase">
                     <phrase question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></phrase>
                 </div>
+				<div ng-switch-when="fall">
+					<fall question="question" nextaction="/test/{{progress}}/question/{{questionId}}/result"></fall>
+				</div>
 			</div>
 		</div>
 	</div>
