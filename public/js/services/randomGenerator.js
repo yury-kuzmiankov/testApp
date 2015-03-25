@@ -32,6 +32,14 @@ angular.module('libraryApp')
             return Math.floor(Math.random() * (max - min + 1)) + min;
         };
 
+        var getRandomArray = function(min, max, length){
+            var array = [];
+            for(var i = 0; i < length; i++){
+                array.push(getRandomInt(min, max));
+            }
+            return array;
+        };
+
         var getPhrase = function(length){
             var text = [];
             var possible = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789";
@@ -41,11 +49,12 @@ angular.module('libraryApp')
                     char : possible.charAt(Math.floor(Math.random() * possible.length))
                 });
             return text;
-        }
+        };
 
         return {
             getRandomInt : getRandomInt,
             shuffle : shuffle,
-            getPhrase : getPhrase
+            getPhrase : getPhrase,
+            getRandomArray : getRandomArray
         }
   });

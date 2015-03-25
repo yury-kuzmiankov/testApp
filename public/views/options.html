@@ -18,6 +18,15 @@
 				<div ng-switch-when="fall">
 					<fall question="question" nextaction="/test/{{progress}}/question/{{questionId}}/result"></fall>
 				</div>
+                <div ng-switch-when="compare">
+                    <compare question="question" nextaction="/test/{{progress}}/question/{{questionId}}/result"></compare>
+                </div>
+                <div ng-switch-when="sum">
+                    <sum question="question" nextaction="/test/{{progress}}/question/{{questionId}}/result"></sum>
+                </div>
+                <div ng-switch-when="random">
+                    <random question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></random>
+                </div>
 			</div>
 		</div>
 	</div>

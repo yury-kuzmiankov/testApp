@@ -110,6 +110,34 @@ fall input{
 	opacity: 0;
 }
 
+compare .btn{
+    width: 140px;
+}
+
+compare .btn.equal{
+    margin-right: 20px;
+}
+
+sum table{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+sum .description{
+    padding: 0 20%;
+}
+
+sum input{
+    width: 50px;
+}
+
+random span{
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 nvd3-pie-chart{
 	display: block;
 }
