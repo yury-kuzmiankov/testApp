@@ -257,6 +257,21 @@
       "questions" : [
         {
           "type" : "maze",
+          "additional" : {
+            "type" : "maze"
+          },
+          "options" : [],
+          "controlTitle" : "OK"
+        }
+      ]
+    },
+    {
+      "questions" : [
+        {
+          "type" : "maze",
+          "additional" : {
+            "type" : "path"
+          },
           "options" : [],
           "controlTitle" : "OK"
         }

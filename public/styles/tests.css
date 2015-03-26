@@ -166,7 +166,12 @@ maze .circle{
 	width: 15px;
 	height: 15px;
 	background-color: red;
-	transition: all 0.08s;
+	transition: all 0.3s;
+}
+
+maze .path td{
+	width: 50px;
+	height: 50px;
 }
 
 nvd3-pie-chart{
