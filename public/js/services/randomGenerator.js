@@ -40,21 +40,52 @@ angular.module('libraryApp')
             return array;
         };
 
+        var getRandomChar = function(array){
+            return array.charAt(Math.floor(Math.random() * array.length));
+        };
+
         var getPhrase = function(length){
             var text = [];
             var possible = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789";
 
             for(var i = 0; i < length; i++)
                 text.push({
-                    char : possible.charAt(Math.floor(Math.random() * possible.length))
+                    char : getRandomChar(possible)
                 });
             return text;
+        };
+
+        var getPhraseBlock = function(length){
+            var possible = "ABCDEFGHIKLMNOPQRSTVXYZ";
+            var block = {
+              first : "",
+              second : "",
+              mistakes : 0
+            };
+            for(var i = 0; i < length; i++){
+                var char = getRandomChar(possible);
+                block.first+= char;
+                block.second+= char;
+            };
+            var mistakes = getRandomInt(1, 3);
+            block.mistakes = mistakes;
+            for(var i = 0; i < mistakes; i++){
+                var position = getRandomInt(0, length - 1);
+                var char = getRandomChar(possible);
+                while(char === block.second.charAt(position)){
+                    char = getRandomChar(possible);
+                }
+                block.second = block.second.substr(0, position) + char + block.second.substr(position + 1);
+            };
+
+            return block;
         };
 
         return {
             getRandomInt : getRandomInt,
             shuffle : shuffle,
             getPhrase : getPhrase,
-            getRandomArray : getRandomArray
+            getRandomArray : getRandomArray,
+            getPhraseBlock : getPhraseBlock
         }
   });

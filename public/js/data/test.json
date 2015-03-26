@@ -238,6 +238,20 @@
           "controlTitle" : "OK"
         }
       ]
+    },
+    {
+      "questions" : [
+        {
+          "type" : "mistake",
+          "prepare" : {
+            "description" : "Подмечайте, подсчитывайте и <span class=\"text-error\">запоминайте</span> число несовпадений в каждой паре буквосочетаний, которые Вам будут предъявляться. <span class=\"blue-text\">Несовпадение</span> - это наличие в нижнем ряду знаков, которые отсутствуют на этих же местах в верхнем ряду.",
+            "example" : "Например: <span class=\"two-lines\">RTHFOIS RTFHOYS</span> (количество несовпадений - 3)",
+            "controlTitle" : "OK"
+          },
+          "options" : [],
+          "controlTitle" : "OK"
+        }
+      ]
     }
   ]
 }

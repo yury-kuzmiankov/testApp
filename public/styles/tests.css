@@ -138,6 +138,11 @@ random span{
     font-weight: bold;
 }
 
+mistake span{
+	display: block;
+	font-size: 20px;
+}
+
 nvd3-pie-chart{
 	display: block;
 }
