@@ -112,7 +112,7 @@ angular.module('libraryApp')
                 $scope.initTimer = function(){
                     this.timer = $interval(function(){
                         $scope.handleResults();
-                    }, 160000);
+                    }, 1160000);
                 };
                 $scope.initTimer();
 

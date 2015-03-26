@@ -166,7 +166,12 @@ maze .circle{
 	width: 15px;
 	height: 15px;
 	background-color: red;
-	transition: all 0.3s;
+	transition: all 0.08s;
+}
+
+words textarea{
+    width: 100%;
+    height: 200px;
 }
 
 maze .path td{

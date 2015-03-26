@@ -276,6 +276,15 @@
           "controlTitle" : "OK"
         }
       ]
+    },
+    {
+      "questions" : [
+        {
+          "type" : "words",
+          "options" : [],
+          "controlTitle" : "OK"
+        }
+      ]
     }
   ]
 }

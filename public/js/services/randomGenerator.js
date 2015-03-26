@@ -55,6 +55,15 @@ angular.module('libraryApp')
             return text;
         };
 
+        var getPhraseUpper = function(length){
+            var text = "";
+            var possible = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+
+            for(var i = 0; i < length; i++)
+                text+= getRandomChar(possible);
+            return text;
+        };
+
         var getPhraseBlock = function(length){
             var possible = "ABCDEFGHIKLMNOPQRSTVXYZ";
             var block = {
@@ -86,6 +95,7 @@ angular.module('libraryApp')
             shuffle : shuffle,
             getPhrase : getPhrase,
             getRandomArray : getRandomArray,
-            getPhraseBlock : getPhraseBlock
+            getPhraseBlock : getPhraseBlock,
+            getPhraseUpper : getPhraseUpper
         }
   });
