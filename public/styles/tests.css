@@ -160,10 +160,13 @@ maze table td{
 
 maze .circle{
 	position: relative;
+	top : 0;
+	left : 0;
 	display: inline-block;
 	width: 15px;
 	height: 15px;
 	background-color: red;
+	transition: all 0.08s;
 }
 
 nvd3-pie-chart{
