@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-heading" ng-bind="question.description"></div>
+    <div class="panel-body">
+        <div class="tableContainer">
+            <table ng-mousemove="moveTracking($event)">
+                <tr ng-repeat="row in maze">
+                    <td ng-repeat="cell in row[0] track by $index" ng-style="applyStyle()">
+                        <div ng-if="$index == startPos.x && $parent.$index == startPos.y" class="circle" ng-mouseenter="startTracking($event)" ></div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

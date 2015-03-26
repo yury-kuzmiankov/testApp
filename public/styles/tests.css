@@ -143,6 +143,29 @@ mistake span{
 	font-size: 20px;
 }
 
+maze .tableContainer{
+	position: relative;
+}
+
+maze table{
+	table-layout: fixed;
+	margin: 0 auto;
+	text-align: center;
+}
+
+maze table td{
+	width: 30px;
+	height: 30px;
+}
+
+maze .circle{
+	position: relative;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background-color: red;
+}
+
 nvd3-pie-chart{
 	display: block;
 }
