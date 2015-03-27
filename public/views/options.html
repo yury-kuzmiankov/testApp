@@ -33,6 +33,12 @@
                 <div ng-switch-when="words">
                     <words question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></words>
                 </div>
+				<div ng-switch-when="questions">
+					<question question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></question>
+				</div>
+				<div ng-switch-when="strings">
+					<strings question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></strings>
+				</div>
 			</div>
 		</div>
 	</div>
