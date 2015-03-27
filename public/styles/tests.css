@@ -183,6 +183,11 @@ strings .text-success{
 	font-size: 20px;
 }
 
+questions span{
+	font-size: 20px;
+	display: block;
+}
+
 nvd3-pie-chart{
 	display: block;
 }

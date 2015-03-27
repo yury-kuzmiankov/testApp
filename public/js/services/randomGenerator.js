@@ -40,6 +40,14 @@ angular.module('libraryApp')
             return array;
         };
 
+        var getRandomString = function(min, max, length){
+            var array = "";
+            for(var i = 0; i < length; i++){
+                array+= getRandomInt(min, max);
+            }
+            return array;
+        };
+
         var getRandomChar = function(array){
             return array.charAt(Math.floor(Math.random() * array.length));
         };
@@ -90,12 +98,39 @@ angular.module('libraryApp')
             return block;
         };
 
+        var removeConsonants = function(word){
+            var possible = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩ";
+            var result = "";
+            for(var i = 0; i < word.length; i++){
+                var char = word.charAt(i);
+                var index = possible.indexOf(char);
+                if(index == -1){
+                    result+= char;
+                }
+            };
+            return result;
+        };
+
+        var removeEven = function(array){
+            var result = "";
+            for(var i = 0; i < array.length; i++){
+                var number = parseInt(array.charAt(i), 10);
+                if(number % 2 === 1){
+                    result+= number;
+                }
+            };
+            return result;
+        };
+
         return {
             getRandomInt : getRandomInt,
             shuffle : shuffle,
             getPhrase : getPhrase,
             getRandomArray : getRandomArray,
             getPhraseBlock : getPhraseBlock,
-            getPhraseUpper : getPhraseUpper
+            getPhraseUpper : getPhraseUpper,
+            removeConsonants : removeConsonants,
+            removeEven : removeEven,
+            getRandomString : getRandomString
         }
   });
