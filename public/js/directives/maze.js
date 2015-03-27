@@ -121,7 +121,24 @@ angular.module('libraryApp')
                         $scope.traking = true;
                         $scope.circle = $element[0].querySelector('.circle');
                         $scope.fails++;
+                        var table = $element[0].querySelector('table');
+                        $scope.addClass(table, 'active');
+
                     }
+                };
+
+                $scope.addClass = function(el, className){
+                    if (el.classList)
+                        el.classList.add(className);
+                    else
+                        el.className += ' ' + className;
+                };
+
+                $scope.removeClass = function(el, className) {
+                    if (el.classList)
+                        el.classList.remove(className);
+                    else
+                        el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
                 };
 
                 $scope.stopTracking = function(){
@@ -129,6 +146,8 @@ angular.module('libraryApp')
                     $scope.circle.style.top = 0;
                     $scope.circle.style.left = 0;
                     $scope.progress = angular.copy($scope.startPos);
+                    var table = $element[0].querySelector('table');
+                    $scope.removeClass(table, 'active');
                 };
 
                 $scope.getDirection = function($target){

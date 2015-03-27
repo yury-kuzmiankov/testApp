@@ -167,6 +167,7 @@ maze .circle{
 	height: 15px;
 	background-color: red;
 	transition: all 0.08s;
+	cursor: pointer;
 }
 
 words textarea{
@@ -177,6 +178,10 @@ words textarea{
 maze .path td{
 	width: 50px;
 	height: 50px;
+}
+
+maze table.active .circle{
+	position: fixed;
 }
 
 strings .text-success{
