@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading" ng-bind="question.description"></div>
+  <div class="panel-body">
+    <table>
+      <tr ng-repeat="row in question.options">
+        <td ng-repeat="cell in row" ng-click="selectCell()" ng-class="cell.isSelected ? 'selected' : ''"
+            ng-style="{'background-color' : cell.color}" ng-bind="cell.content"></td>
+      </tr>
+    </table>
+    <p class="text-error" ng-bind="error"></p>
+    <hr>
+    <div class="doneInstruction">Вам необходимо найти по возрастанию числа на <span ng-bind="question.additional.description"></span> фоне</div>
+    <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()"></a>
+  </div>
+</div>

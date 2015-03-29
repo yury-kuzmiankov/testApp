@@ -71,7 +71,15 @@ angular
           errorStack: []
         };
         $rootScope.global = global;
-        $scope.auth = { postfix: '@epam.com' };
+        $scope.auth = {
+            login : "y",
+            postfix: '@epam.com',
+            password : "21"
+        };
+        $scope.proceed = function () {
+            $scope.signin();
+        };
+
         $scope.signin = function () {
           $scope.authInProgress = true;
           $rootScope.errorWithCredentials = null;

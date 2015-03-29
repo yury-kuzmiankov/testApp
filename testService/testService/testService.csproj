@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F9F0D2D-C016-476F-8A34-ED0EBF6446B6}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>testService</RootNamespace>
+    <AssemblyName>testService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.96.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="components\angular-cookies\angular-cookies.js" />
+    <Content Include="components\angular-cookies\angular-cookies.min.js" />
+    <Content Include="components\angular-cookies\index.js" />
+    <Content Include="components\angular-cookie\angular-cookie.js" />
+    <Content Include="components\angular-cookie\angular-cookie.min.js" />
+    <Content Include="components\angular-resource\angular-resource.js" />
+    <Content Include="components\angular-resource\angular-resource.min.js" />
+    <Content Include="components\angular-resource\index.js" />
+    <Content Include="components\angular-route\angular-route.js" />
+    <Content Include="components\angular-route\angular-route.min.js" />
+    <Content Include="components\angular-route\index.js" />
+    <Content Include="components\angularjs-nvd3-directives\dist\angularjs-nvd3-directives.js" />
+    <Content Include="components\angularjs-nvd3-directives\dist\angularjs-nvd3-directives.min.js" />
+    <Content Include="components\angularjs-nvd3-directives\examples\bulletChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\cumulativeLineChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\discreteBar.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\discreteBar.with.automatic.resize.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\discreteBar.with.event.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\event.lineChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\historicalBarChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.108.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.108.nvd3.native.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.113.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.114.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.133.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.133.t1.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.133.t2.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.152.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.156.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.30.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.37.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue.49.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\issue51.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\js\angular-route.js" />
+    <Content Include="components\angularjs-nvd3-directives\examples\js\angular.js" />
+    <Content Include="components\angularjs-nvd3-directives\examples\js\d3.js" />
+    <Content Include="components\angularjs-nvd3-directives\examples\js\moment.js" />
+    <Content Include="components\angularjs-nvd3-directives\examples\js\nv.d3.js" />
+    <Content Include="components\angularjs-nvd3-directives\examples\legendDirective.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\linChart.min.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineChart.d3.native.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineChart.ticks.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineChart.tickValue.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineChart.with.automatic.resize.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineChart.with.configuration.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineChart.with.ngRepeat.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\linePlusBarChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\linePlusBarChart.with.automatic.resize.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\lineWithFocusChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\liveData.example.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\multiBarChart.clipping.nvd3.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\multiBarChart.clippingData.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\multiBarChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\multiBarHorizontalChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\mutiBarChart.with.automatic.resize.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\nvd3.callback.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\objectEquality.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\pie.donut.chart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\pieChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\pieChart.with.automatic.resize.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\refresh.example.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\scatterChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\scatterChart.with.automatic.resize.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\sparklineChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\stackedAreaChart.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\stackedAreaChart.with.automatic.resize.html" />
+    <Content Include="components\angularjs-nvd3-directives\examples\stylesheets\bootstrap.min.css" />
+    <Content Include="components\angularjs-nvd3-directives\examples\stylesheets\nv.d3.css" />
+    <Content Include="components\angularjs-nvd3-directives\examples\ticks.d3.html" />
+    <Content Include="components\angularjs-nvd3-directives\Gruntfile.js" />
+    <Content Include="components\angularjs-nvd3-directives\src\directives\intro.js" />
+    <Content Include="components\angularjs-nvd3-directives\src\directives\legendDirectives.js" />
+    <Content Include="components\angularjs-nvd3-directives\src\directives\nvD3AxisConfiguration.js" />
+    <Content Include="components\angularjs-nvd3-directives\src\directives\nvd3Directives.js" />
+    <Content Include="components\angularjs-nvd3-directives\src\directives\nvD3Events.js" />
+    <Content Include="components\angularjs-nvd3-directives\src\directives\nvD3LegendConfiguration.js" />
+    <Content Include="components\angularjs-nvd3-directives\src\directives\outro.js" />
+    <Content Include="components\angular\angular-csp.css" />
+    <Content Include="components\angular\angular.js" />
+    <Content Include="components\angular\angular.min.js" />
+    <Content Include="components\angular\index.js" />
+    <Content Include="components\d3\d3.js" />
+    <Content Include="components\d3\d3.min.js" />
+    <Content Include="components\nvd3\GruntFile.js" />
+    <Content Include="components\nvd3\nv.d3.css" />
+    <Content Include="components\nvd3\nv.d3.js" />
+    <Content Include="components\nvd3\nv.d3.min.css" />
+    <Content Include="components\nvd3\nv.d3.min.js" />
+    <Content Include="components\nvd3\src\nv.d3.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\figures\1.jpg" />
+    <Content Include="images\figures\10.jpg" />
+    <Content Include="images\figures\11.jpg" />
+    <Content Include="images\figures\12.jpg" />
+    <Content Include="images\figures\13.jpg" />
+    <Content Include="images\figures\14.jpg" />
+    <Content Include="images\figures\15.jpg" />
+    <Content Include="images\figures\16.jpg" />
+    <Content Include="images\figures\2.jpg" />
+    <Content Include="images\figures\3.jpg" />
+    <Content Include="images\figures\4.jpg" />
+    <Content Include="images\figures\5.jpg" />
+    <Content Include="images\figures\6.jpg" />
+    <Content Include="images\figures\7.jpg" />
+    <Content Include="images\figures\8.jpg" />
+    <Content Include="images\figures\9.jpg" />
+    <Content Include="images\line.png" />
+    <Content Include="images\path.jpg" />
+    <Content Include="images\square.jpg" />
+    <Content Include="js\app.js" />
+    <Content Include="js\controllers\about.js" />
+    <Content Include="js\controllers\auth.js" />
+    <Content Include="js\controllers\main.js" />
+    <Content Include="js\controllers\result.js" />
+    <Content Include="js\controllers\test.js" />
+    <Content Include="js\directives\colors.js" />
+    <Content Include="js\directives\compare.js" />
+    <Content Include="js\directives\digits.js" />
+    <Content Include="js\directives\fall.js" />
+    <Content Include="js\directives\figures.js" />
+    <Content Include="js\directives\maze.js" />
+    <Content Include="js\directives\mistake.js" />
+    <Content Include="js\directives\phrase.js" />
+    <Content Include="js\directives\questions.js" />
+    <Content Include="js\directives\random.js" />
+    <Content Include="js\directives\strings.js" />
+    <Content Include="js\directives\sum.js" />
+    <Content Include="js\directives\words.js" />
+    <Content Include="js\services\auth-service.js" />
+    <Content Include="js\services\chartPreparer.js" />
+    <Content Include="js\services\helper.js" />
+    <Content Include="js\services\randomGenerator.js" />
+    <Content Include="js\services\test.js" />
+    <Content Include="styles\bootstrap-responsive.css" />
+    <Content Include="styles\bootstrap-theme.css" />
+    <Content Include="styles\bootstrap.css" />
+    <Content Include="styles\css_reset.css" />
+    <Content Include="styles\styles.css" />
+    <Content Include="styles\tests.css" />
+    <Content Include="templates\colors.html" />
+    <Content Include="templates\compare.html" />
+    <Content Include="templates\digits.html" />
+    <Content Include="templates\fall.html" />
+    <Content Include="templates\figures.html" />
+    <Content Include="templates\maze.html" />
+    <Content Include="templates\mistake.html" />
+    <Content Include="templates\phrase.html" />
+    <Content Include="templates\questions.html" />
+    <Content Include="templates\random.html" />
+    <Content Include="templates\strings.html" />
+    <Content Include="templates\sum.html" />
+    <Content Include="templates\words.html" />
+    <Content Include="ng_views\about.html" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="ng_views\main.html" />
+    <Content Include="ng_views\options.html" />
+    <Content Include="ng_views\prepare.html" />
+    <Content Include="ng_views\result.html" />
+    <Content Include="ng_views\summary.html" />
+    <Content Include="ng_views\wait.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="base\testBase" />
+    <Content Include="Views\Shared\Site.Master" />
+    <None Include="components\angular-cookies\.bower.json" />
+    <None Include="components\angular-cookies\angular-cookies.min.js.map" />
+    <None Include="components\angular-cookies\bower.json" />
+    <None Include="components\angular-cookies\package.json" />
+    <None Include="components\angular-cookies\README.md" />
+    <None Include="components\angular-cookie\.bower.json" />
+    <None Include="components\angular-cookie\bower.json" />
+    <None Include="components\angular-cookie\package.json" />
+    <None Include="components\angular-resource\.bower.json" />
+    <None Include="components\angular-resource\angular-resource.min.js.map" />
+    <None Include="components\angular-resource\bower.json" />
+    <None Include="components\angular-resource\package.json" />
+    <None Include="components\angular-resource\README.md" />
+    <None Include="components\angular-route\.bower.json" />
+    <None Include="components\angular-route\angular-route.min.js.map" />
+    <None Include="components\angular-route\bower.json" />
+    <None Include="components\angular-route\package.json" />
+    <None Include="components\angular-route\README.md" />
+    <None Include="components\angularjs-nvd3-directives\.bower.json" />
+    <None Include="components\angularjs-nvd3-directives\bower.json" />
+    <None Include="components\angularjs-nvd3-directives\LICENSE" />
+    <None Include="components\angularjs-nvd3-directives\LICENSE.md" />
+    <None Include="components\angularjs-nvd3-directives\package.json" />
+    <None Include="components\angularjs-nvd3-directives\README.md" />
+    <None Include="components\angular\.bower.json" />
+    <None Include="components\angular\angular.min.js.gzip" />
+    <None Include="components\angular\angular.min.js.map" />
+    <None Include="components\angular\bower.json" />
+    <None Include="components\angular\package.json" />
+    <None Include="components\angular\README.md" />
+    <None Include="components\d3\.bower.json" />
+    <None Include="components\d3\.spmignore" />
+    <None Include="components\d3\bower.json" />
+    <None Include="components\d3\composer.json" />
+    <None Include="components\d3\CONTRIBUTING.md" />
+    <None Include="components\d3\LICENSE" />
+    <None Include="components\d3\README.md" />
+    <None Include="components\nvd3\.bower.json" />
+    <None Include="components\nvd3\bower.json" />
+    <None Include="components\nvd3\build.bat" />
+    <None Include="components\nvd3\LICENSE.md" />
+    <None Include="components\nvd3\Makefile" />
+    <None Include="components\nvd3\package.json" />
+    <None Include="components\nvd3\README.md" />
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="js\data\test.json" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>80</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.96.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.96.0\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Включите восстановление пакетов NuGet, чтобы загрузить их. Дополнительные сведения см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.96.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.96.0\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+</Project>
