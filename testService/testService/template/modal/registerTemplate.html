@@ -1,0 +1,58 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Введите логин/пароль</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" name="registerForm" ng-submit=register() novalidate ng-show="!displaySuccess">
+      <div class="form-group text-error" ng-show="error">
+        Имя пользователя занято. Выберите другое.
+      </div>
+      <div class="form-group" ng-class="{'has-error' : registerForm.login.$invalid && registerForm.login.$touched}">
+        <label class="control-label">Имя пользователя</label>
+        <div class="controls">
+          <input type="text" class="form-control" name="login" placeholder="Имя Пользователя" ng-model="login" required>
+          <span class="text-error" ng-show="registerForm.login.$error.required && registerForm.login.$touched">Имя пользователя не должно быть пустым</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error' : registerForm.password.$invalid  && registerForm.password.$touched}">
+        <label class="control-label">Пароль</label>
+        <div class="controls">
+           <input type="password" class="form-control" name="password" placeholder="Пароль" ng-model="password" required>
+           <span class="text-error" ng-show="registerForm.password.$error.required && registerForm.passsword.$touched">Пароль не должен быть пустым</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error' : registerForm.firstName.$invalid && registerForm.firstName.$touched}">
+        <label class="control-label">Имя</label>
+        <div class="controls">
+          <input type="text" class="form-control" name="firstName" placeholder="Имя" ng-model="firstName" required>
+          <span class="text-error" ng-show="registerForm.firstName.$error.required && registerForm.firstName.$touched">Имя не должно быть пустым</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error' : registerForm.lastName.$invalid && registerForm.lastName.$touched}">
+        <label class="control-label">Фамилия</label>
+        <div class="controls">
+          <input type="text" class="form-control" name="lastName" placeholder="Фамилия" ng-model="lastName" required>
+          <span class="text-error" ng-show="registerForm.lastName.$error.required && registerForm.lastName.$touched">Фамилия не должна быть пустой</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error' : registerForm.department.$invalid && registerForm.department.$touched}">
+        <label class="control-label">Отдел</label>
+        <div class="controls">
+          <select ng-model="departmentDef" class="form-control" ng-options="department.Name for department in departments" required></select>
+          <span class="text-error" ng-show="registerForm.department.$error.required && registerForm.department.$touched">Нужно выбрать отдел</span>
+        </div>
+      </div>
+     
+      <hr>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid" value="OK"/>
+        <input type="button" class="btn" ng-click="cancel()" value="Отмена"/>
+      </div>
+    </form>
+    <form class="form-horizontal" ng-show="displaySuccess">
+        <div class="form-group">
+            <span class="text-success">Регистрация прошла успешно. Для продолжения нажмите ОК и выполните вход в приложение.</span>
+             <hr>
+            <input type="button" class="btn" ng-click="cancel()" value="ОК"/>
+        </div>
+    </form>
+</div>

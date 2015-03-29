@@ -91,15 +91,23 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\DepartmentService.cs" />
+    <Compile Include="Services\TestService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="components\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="components\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="components\angular-bootstrap\ui-bootstrap.js" />
+    <Content Include="components\angular-bootstrap\ui-bootstrap.min.js" />
     <Content Include="components\angular-cookies\angular-cookies.js" />
     <Content Include="components\angular-cookies\angular-cookies.min.js" />
     <Content Include="components\angular-cookies\index.js" />
@@ -182,6 +190,13 @@
     <Content Include="components\angular\angular.js" />
     <Content Include="components\angular\angular.min.js" />
     <Content Include="components\angular\index.js" />
+    <Content Include="components\bootstrap-bower\css\bootstrap-theme.css" />
+    <Content Include="components\bootstrap-bower\css\bootstrap-theme.min.css" />
+    <Content Include="components\bootstrap-bower\css\bootstrap.css" />
+    <Content Include="components\bootstrap-bower\css\bootstrap.min.css" />
+    <Content Include="components\bootstrap-bower\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="components\bootstrap-bower\js\bootstrap.js" />
+    <Content Include="components\bootstrap-bower\js\bootstrap.min.js" />
     <Content Include="components\d3\d3.js" />
     <Content Include="components\d3\d3.min.js" />
     <Content Include="components\nvd3\GruntFile.js" />
@@ -217,6 +232,7 @@
     <Content Include="js\controllers\main.js" />
     <Content Include="js\controllers\result.js" />
     <Content Include="js\controllers\test.js" />
+    <Content Include="js\controllers\login.js" />
     <Content Include="js\directives\colors.js" />
     <Content Include="js\directives\compare.js" />
     <Content Include="js\directives\digits.js" />
@@ -255,6 +271,12 @@
     <Content Include="templates\sum.html" />
     <Content Include="templates\words.html" />
     <Content Include="ng_views\about.html" />
+    <Content Include="template\modal\loginTemplate.html" />
+    <Content Include="template\modal\registerTemplate.html" />
+    <Content Include="template\popover\popover.html" />
+    <Content Include="template\popover\popover-template.html" />
+    <Content Include="template\modal\backdrop.html" />
+    <Content Include="template\modal\window.html" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="ng_views\main.html" />
     <Content Include="ng_views\options.html" />
@@ -277,6 +299,8 @@
   <ItemGroup>
     <None Include="base\testBase" />
     <Content Include="Views\Shared\Site.Master" />
+    <None Include="components\angular-bootstrap\.bower.json" />
+    <None Include="components\angular-bootstrap\bower.json" />
     <None Include="components\angular-cookies\.bower.json" />
     <None Include="components\angular-cookies\angular-cookies.min.js.map" />
     <None Include="components\angular-cookies\bower.json" />
@@ -307,6 +331,12 @@
     <None Include="components\angular\bower.json" />
     <None Include="components\angular\package.json" />
     <None Include="components\angular\README.md" />
+    <None Include="components\bootstrap-bower\.bower.json" />
+    <None Include="components\bootstrap-bower\bower.json" />
+    <None Include="components\bootstrap-bower\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="components\bootstrap-bower\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="components\bootstrap-bower\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="components\bootstrap-bower\README.md" />
     <None Include="components\d3\.bower.json" />
     <None Include="components\d3\.spmignore" />
     <None Include="components\d3\bower.json" />

@@ -1,0 +1,29 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Введите логин/пароль</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" name="loginForm" ng-submit=ok() novalidate>
+      <div class="form-group text-error" ng-show="error">
+        Ошибка авторизации. Имя/пароль некорректны.
+      </div>
+      <div class="form-group" ng-class="{'has-error' : loginForm.login.$invalid && loginForm.login.$touched}">
+        <label class="control-label" for="inputEmail">Имя</label>
+        <div class="controls">
+          <input type="text" class="form-control" name="login" placeholder="Имя" ng-model="login" required>
+          <span class="text-error" ng-show="loginForm.login.$error.required && loginForm.login.$touched">Имя не должно быть пустым</span>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid  && loginForm.password.$touched}">
+        <label class="control-label" for="inputPassword">Пароль</label>
+        <div class="controls">
+           <input type="password" class="form-control" name="password" placeholder="Пароль" ng-model="password" required>
+           <span class="text-error" ng-show="loginForm.password.$error.required && loginForm.passsword.$touched">Пароль не должен быть пустым</span>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid" value="OK"/>
+        <input type="button" class="btn" ng-click="cancel()" value="Отмена"/>
+      </div>
+    </form>
+</div>

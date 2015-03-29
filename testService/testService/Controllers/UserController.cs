@@ -43,11 +43,15 @@ namespace testService.Controllers
         [HttpPost]
         public ActionResult insert(string name, string firstName, string lastName, string password, string department)
         {
-            
             UserService service = new UserService();
-
-            int count = service.addUser(name, firstName, lastName, password, Int32.Parse(department));
+            int count = 0;
+            User user = service.userExists(name);
+            if (user == null)
+            {
+                count = service.addUser(name, firstName, lastName, password, Int32.Parse(department));
+            }
             return Json(count, JsonRequestBehavior.AllowGet);
+            
         }
     }
 }

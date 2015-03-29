@@ -20,6 +20,7 @@ angular.module('libraryApp').factory('authService', [
                 return $http.get('/idea/auth').error(function (data, status) {
                     if (status === 401 && data.code === 'NOPERMISSION') {
                         clearSession();
+                        $rootScope.$broadcast('userChanged');
                     }
                 });
             },
@@ -34,15 +35,29 @@ angular.module('libraryApp').factory('authService', [
                     data: data
                 }).then(function (response) {
                     var data = response.data;
-                    if (data.status === appConfig.responseStatus.SUCCESS) {
+                    if (data) {
                         $cookieStore.put(appConfig.userCookie, { authN: true });
-                        _user = data.user;
+                        _user = data;
                         $rootScope.global.isAuthN = true;
                         $rootScope.global.currentUser = _user;
                         helper.storage.set(USER_KEY, _user);
                     } else {
                         return $q.reject(data);
                     }
+                    $rootScope.$broadcast('userChanged');
+                });
+            },
+            register: function (data) {
+                return $http({
+                    method: 'POST',
+                    url: '/user/insert',
+                    data: data
+                }).then(function (response) {
+                    var data = response.data;
+                    if (!data) {
+                        return $q.reject(data);
+                    }
+                    $rootScope.$broadcast('userChanged');
                 });
             },
             getUserData: function () {
@@ -50,10 +65,7 @@ angular.module('libraryApp').factory('authService', [
             },
             logout: function () {
                 clearSession();
-                $http({
-                    method: 'POST',
-                    url: '/idea/logout'
-                });
+                $rootScope.$broadcast('userChanged');
             }
         };
     }

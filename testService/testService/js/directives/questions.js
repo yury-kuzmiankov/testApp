@@ -170,7 +170,7 @@ angular.module('libraryApp')
                             selectedCount++;
                         }
                     });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
+                    $scope.question.results = $scope.results;
                     $location.path($scope.nextaction);
                 };
             }

@@ -8,10 +8,41 @@
  * Controller of the yomanAppApp
  */
 angular.module('libraryApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $modal, $rootScope, testFactory, authService, $location, helper) {
+      $scope.currentTest = helper.storage.get("currentTest");
+      $scope.$on('userChanged', function () {
+          $scope.updateUser();
+      });
+      $scope.$on('testDone', function () {
+          $scope.currentTest = helper.storage.get("currentTest");
+      });
+      $scope.updateUser = function () {
+          if ($rootScope.global && $rootScope.global.isAuthN) {
+              $scope.user = $rootScope.global.currentUser;
+              $scope.isAuth = true;
+          } else {
+              $scope.user = null;
+              $scope.isAuth = false;
+          }
+      };
+      $scope.updateUser();
+
+      $scope.login = function () {
+          var modalInstance = $modal.open({
+              templateUrl: 'template/modal/loginTemplate.html',
+              controller: 'LoginCtrl'
+          });
+      };
+
+      $scope.openregister = function () {
+          var modalInstance = $modal.open({
+              templateUrl: 'template/modal/registerTemplate.html',
+              controller: 'LoginCtrl'
+          });
+      };
+
+      $scope.logout = function () {
+          authService.logout();
+          $location.path("/");
+      };
   });

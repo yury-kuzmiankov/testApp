@@ -2,9 +2,11 @@
 <div class="panel-body text-center">
   <div class="row-fluid">
     <div class="span12">
-      <a class="btn btn-lg btn-success" ng-href="#/loadTests">Начать тест!
+      <a class="btn btn-lg btn-success" ng-href="#/loadTests" ng-show="isAuth && !currentTest.isDone">Начать тест!
         <span class="glyphicon glyphicon-ok"></span>
       </a>
+      <div class="text-error" ng-show="!isAuth">Для продолжения нужно войти в систему.</div>
+      <div class="text-error" ng-show="currentTest.isDone">Вы уже прошли тест. Повторите попытку завтра.</div>
     </div>
   </div>
 </div>

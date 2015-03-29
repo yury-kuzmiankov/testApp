@@ -15,7 +15,7 @@ namespace testService
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("{public}", new { assets = @".*\.(html|css|js|gif|jpg)(/.)?" });
+            routes.IgnoreRoute("{public}", new { assets = @".*\.(html|css|js|gif|jpg|eot|ttf|svg|woff)(/.)?" });
             routes.IgnoreRoute("fonts/");
 
             routes.MapRoute(
