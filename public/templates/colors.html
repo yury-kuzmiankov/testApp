@@ -1,12 +1,11 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Из предъявленных цветов выберите те, которые в ДАННЫЙ МОМЕНТ Вам <span ng-bind="question.additional.description"></span>. Вы можете Выбрать любое число цветов (от 1 до 8)</div>
+  <div class="panel-heading">Выберите наиболее симпатичные вам цвета.</div>
   <div class="panel-body">
     <ul>
       <li ng-repeat="option in question.options" data-index = "{{$index}}" ng-click="selectColor()" ng-class="option.isSelected ? 'selected' : ''"
           ng-style="{'background-color' : option.color}"></li>
     </ul>
     <hr>
-    <div class="doneInstruction">ПОСЛЕ ТОГО, КАК ВЫ ВЫБРАЛИ ВСЕ СИМПАТИЧНЫЕ ДЛЯ ВАС ЦВЕТА, НАЖМИТЕ КНОПКУ [ОК]</div>
-    <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
+    <div class="doneInstruction">Тест закончится после того как вы выберите все цвета</div>
   </div>
 </div>

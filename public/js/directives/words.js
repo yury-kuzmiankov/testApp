@@ -16,15 +16,21 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/words.html',
-            controller: function($scope, $element, $interval, $location) {
-                $scope.array = ["НАРОД","СОЛНЦЕ","ПСИХИАТР","РАДОСТЬ","ПЛАВАНИЕ","КОМЕДИЯ","ОТЧАЯНИЕ","ЗАЙМ","РЕПОРТАЖ","КОНКУРС","ЛИЧНОСТЬ","ДЖИН","РАЙОН","НОВОСТЬ","ФАКТ","ЭКЗАМЕН","ЛАБОРАТОРИЯ","ОСНОВАНИЕ","ПРОКУРОР","ХОККЕЙ","ТРОИЦА","ТЕОРИЯ","ТЕЛЕВИЗОР","ПАМЯТЬ","ВОСПРИЯТИЕ","ЛЮБОВЬ"];
+            controller: function($scope, $element, $interval) {
+                $scope.array = ["СОЛНЦЕ","РАЙОН","НОВОСТЬ","ФАКТ","ЭКЗАМЕН","ПРОКУРОР","ТЕОРИЯ","ХОККЕЙ","ТЕЛЕВИЗОР","ПАМЯТЬ","ВОСПРИЯТИЕ","ЛЮБОВЬ","СПЕКТАКЛЬ","РАДОСТЬ","НАРОД","ГИЕНА","РЕПОРТАЖ","КОНКУРС","ЛИЧНОСТЬ","ПЛАВАНИЕ","КОМЕДИЯ","ОТЧАЯНИЕ","ЛАБОРАТОРИЯ","ОСНОВАНИЕ","ПСИХИАТРИЯ"];
+                $scope.startTime = new Date().getTime();
                 $scope.results = [];
+                $scope.fails = 0;
+                $scope.correct = 0;
+                $scope.result = 0;
                 $scope.line = "";
                 $scope.initTimer = function(){
                     this.timer = $interval(function(){
-                        $scope.next();
-                    }, 60000);
+                        $scope.handleResults();
+                    }, 120000);
                 };
+                $scope.initTimer();
+
                 $scope.preparePhrase = function(){
                     $scope.line = randomService.getPhraseUpper(randomService.getRandomInt(10, 40));
                     $scope.array =  randomService.shuffle($scope.array);
@@ -39,25 +45,62 @@ angular.module('libraryApp')
                     textArea.focus();
                     var startPos = textArea.selectionStart;
                     var endPos = textArea.selectionEnd;
-                    var word = textArea.value.substring(startPos, endPos)
-                    for(var i = 0; i < $scope.array.length; i++){
-                        if($scope.array[i] === word){
-                            $scope.results.push(word);
+                    var word = textArea.value.substring(startPos, endPos);
+                    var isAlreadySelected = false;
+                    for(var j = 0; j < $scope.results.length; j++){
+                        if($scope.results[j] === word){
+                            isAlreadySelected = true;
                             break;
                         }
                     }
+                    var isCorrect = false;
+                    if(!isAlreadySelected){
+                        for(var i = 0; i < $scope.array.length; i++){
+                            if($scope.array[i] === word){
+                                $scope.results.push(word);
+                                isCorrect = true;
+                                break;
+                            }
+                        }
+                    }
+                    if(isCorrect){
+                        $scope.result++;
+                        $scope.correct++;
+                    }else{
+                        $scope.result--;
+                        $scope.fails++;
+                    }
+
+                };
+
+                $scope.getResult = function(value) {
+                    var result = "";
+                    switch  (true) {
+                        case (value >= 20):
+                            result = "Высокий результат";
+                            break;
+                        case (value >= 19):
+                            result = "Средний результат";
+                            break;
+                        default :
+                            result = "Низкий результат";
+                    }
+                    return result;
                 };
 
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
-                        }
-                    });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
-                    $location.path($scope.nextaction);
+
+                    $scope.$emit("testDone", {
+                        Fail: $scope.fails,
+                        Correct: $scope.correct,
+                        Neutral: 0,
+                        Try: 1,
+                        Result: $scope.getResult($scope.result),
+                        Timestamp: new Date,
+                        TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                        isDone: true
+                    })
                 };
             }
         }

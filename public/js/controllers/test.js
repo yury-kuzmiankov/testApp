@@ -9,7 +9,11 @@
  */
 angular.module('libraryApp')
   .controller('TestCtrl',  function ($scope, testFactory, $routeParams, $location, chartService) {
-      testFactory.getTests().then(function(data) {
+    $scope.$on("testDone", function(event, result){
+        console.log(result);
+        $location.path("/test/" + $scope.progress + "/question/" + $scope.progress + "/result");
+    });
+    testFactory.getTests().then(function(data) {
         $scope.data = data;
         if($routeParams.testId === undefined){
             //go to first test

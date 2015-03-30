@@ -16,8 +16,9 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/sum.html',
-            controller: function($scope, $interval, $location) {
+            controller: function($scope, $interval) {
                 $scope.array = [0, 0, 0, 0, 0];
+                $scope.startTime = new Date().getTime();
                 $scope.results = [];
                 $scope.answer = "";
                 $scope.progress = 0;
@@ -77,16 +78,55 @@ angular.module('libraryApp')
                     return sum;
                 };
 
+                $scope.getResult = function(timeSpend, fail) {
+                    var results = [
+                        "Высокий результат", "Средний результат", "Низкий результат"
+                    ];
+                    var result = "";
+                    if(fail > 1){
+                        result = results[2];
+                    }else{
+                        switch (true) {
+                            case (timeSpend < 35 && fail == 0):
+                                result = results[0];
+                                break;
+                            case (timeSpend < 35 && fail == 1):
+                                result = results[1];
+                                break;
+                            case (35 <= timeSpend && timeSpend < 50 && fail == 0) :
+                                result = results[1];
+                                break;
+                            default :
+                                result = results[2];
+                        }
+                    }
+                    return result;
+                };
+
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
+                    var correct = 0;
+                    var fail = 0;
+                    var timeSpend = Math.floor((new Date().getTime() - $scope.startTime) / 1000);
+                    angular.forEach($scope.results, function(result) {
+                        if(result){
+                            correct++;
+                        }else{
+                            fail++;
                         }
                     });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
-                    $location.path($scope.nextaction);
+
+
+                    $scope.$emit("testDone", {
+                        Fail: fail,
+                        Correct: correct,
+                        Neutral: 0,
+                        Try: 1,
+                        Result: $scope.getResult(timeSpend, fail),
+                        Timestamp: new Date,
+                        TimeSpend: timeSpend,
+                        isDone: true
+                    })
                 };
             }
         }

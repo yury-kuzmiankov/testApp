@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading" ng-bind="question.description"></div>
+  <div class="panel-heading">Вам необходимо найти по возрастанию числа на <span ng-bind="currentDescription.description"></span> фоне</div>
   <div class="panel-body">
     <table>
       <tr ng-repeat="row in question.options">
@@ -8,8 +8,5 @@
       </tr>
     </table>
     <p class="text-error" ng-bind="error"></p>
-    <hr>
-    <div class="doneInstruction">Вам необходимо найти по возрастанию числа на <span ng-bind="question.additional.description"></span> фоне</div>
-    <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()"></a>
   </div>
 </div>

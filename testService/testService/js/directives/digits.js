@@ -12,11 +12,10 @@ angular.module('libraryApp')
         return {
             restrict: "E",
             scope: {
-                question: '=',
-                nextaction: '@'
+                question: '='
             },
             templateUrl: 'templates/digits.html',
-            controller: function ($scope, $element, $interval, $location) {
+            controller: function ($scope, $element, $interval) {
                 $scope.current = 0;
                 $scope.startTime = new Date().getTime();
                 $scope.tried = 1;
@@ -103,7 +102,6 @@ angular.module('libraryApp')
                         TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
                         isDone: true
                     });
-                    //$location.path($scope.nextaction);
                 };
 
 

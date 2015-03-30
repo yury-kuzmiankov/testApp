@@ -1,10 +1,10 @@
 <div class="panel panel-default">
-  <div class="panel-heading" ng-bind="question.description"></div>
+  <div class="panel-heading">Выберите наиболее симпатичные вам фигуры</div>
   <div class="panel-body">
     <ul>
       <li ng-repeat="option in question.options" data-index = "{{$index}}" ng-click="selectFigure()" ng-class="[option.type, option.isSelected ? 'selected' : '']"></li>
     </ul>
     <hr>
-    <a class="btn btn-lg btn-success" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
+    <div class="doneInstruction">Тест закончится после того как вы выберите все фигуры</div>
   </div>
 </div>
