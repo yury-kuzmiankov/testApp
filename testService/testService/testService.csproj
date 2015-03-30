@@ -98,6 +98,7 @@
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\DepartmentService.cs" />
@@ -119,6 +120,11 @@
     <Content Include="components\angular-route\angular-route.js" />
     <Content Include="components\angular-route\angular-route.min.js" />
     <Content Include="components\angular-route\index.js" />
+    <Content Include="components\angular-ui-grid\ui-grid.css" />
+    <Content Include="components\angular-ui-grid\ui-grid.js" />
+    <Content Include="components\angular-ui-grid\ui-grid.min.css" />
+    <Content Include="components\angular-ui-grid\ui-grid.min.js" />
+    <Content Include="components\angular-ui-grid\ui-grid.svg" />
     <Content Include="components\angularjs-nvd3-directives\dist\angularjs-nvd3-directives.js" />
     <Content Include="components\angularjs-nvd3-directives\dist\angularjs-nvd3-directives.min.js" />
     <Content Include="components\angularjs-nvd3-directives\examples\bulletChart.html" />
@@ -233,6 +239,7 @@
     <Content Include="js\controllers\result.js" />
     <Content Include="js\controllers\test.js" />
     <Content Include="js\controllers\login.js" />
+    <Content Include="js\controllers\testresult.js" />
     <Content Include="js\directives\colors.js" />
     <Content Include="js\directives\compare.js" />
     <Content Include="js\directives\digits.js" />
@@ -251,6 +258,7 @@
     <Content Include="js\services\helper.js" />
     <Content Include="js\services\randomGenerator.js" />
     <Content Include="js\services\test.js" />
+    <Content Include="ng_views\testresult.html" />
     <Content Include="styles\bootstrap-responsive.css" />
     <Content Include="styles\bootstrap-theme.css" />
     <Content Include="styles\bootstrap.css" />
@@ -319,6 +327,12 @@
     <None Include="components\angular-route\bower.json" />
     <None Include="components\angular-route\package.json" />
     <None Include="components\angular-route\README.md" />
+    <None Include="components\angular-ui-grid\.bower.json" />
+    <None Include="components\angular-ui-grid\bower.json" />
+    <None Include="components\angular-ui-grid\README.md" />
+    <None Include="components\angular-ui-grid\ui-grid.eot" />
+    <None Include="components\angular-ui-grid\ui-grid.ttf" />
+    <None Include="components\angular-ui-grid\ui-grid.woff" />
     <None Include="components\angularjs-nvd3-directives\.bower.json" />
     <None Include="components\angularjs-nvd3-directives\bower.json" />
     <None Include="components\angularjs-nvd3-directives\LICENSE" />

@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Нажмите пробел</div>
+  <div class="panel-body">
+    <div class="fallFigureContainer">
+      <div class="rectangle" ng-style="{top : rectanglePos}"></div>
+      <div class="limit"></div>
+    </div>
+    <input type="text" ng-blur="focusElement()" ng-model="typed" ng-keyup="checkKey()">
+  </div>
+</div>

@@ -47,6 +47,99 @@ namespace testService.Services
             return tests;
         }
 
+        public List<Test> getTestsByDepartment(int id)
+        {
+            List<Test> tests = new List<Test>();
+            string query = "SELECT result.fail, result.testId, result.neutral, result.correct, result.[timestamp], result.isDone, result.result, result.timeSpent, result.try, users.id AS userId, users.lastName, department.id, department.name  FROM result INNER JOIN users ON result.userID = users.id INNER JOIN department ON users.department = department.id WHERE (department.id = @id) ORDER BY result.[timestamp] DESC";
+            try
+            {
+                conn.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    SQLiteDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        tests.Add(new Test()
+                        {
+
+                            Fail = dataReader.GetInt32(0),
+                            TestId = dataReader.GetInt32(1),
+                            Neutral = dataReader.GetInt32(2),
+                            Correct = dataReader.GetInt32(3),
+                            Timestamp = dataReader.GetDateTime(4),
+                            Result = dataReader.GetString(6),
+                            TimeSpend = dataReader.GetInt32(7),
+                            Try = dataReader.GetInt32(8),
+                            user = new User()
+                            {
+                                Id = dataReader.GetInt32(9),
+                                LastName = dataReader.GetString(10),
+                                department = new Department()
+                                {
+                                    Id = dataReader.GetInt32(11),
+                                    Name = dataReader.GetString(12),
+
+                                }
+                            }
+                        }); 
+                    }
+                }
+            }
+            catch (Exception e) { throw e; }
+            finally
+            {
+                conn.Close();
+            }
+            return tests;
+        }
+
+        public List<Test> getTests()
+        {
+            List<Test> tests = new List<Test>();
+            string query = "SELECT result.fail, result.testId, result.neutral, result.correct, result.[timestamp], result.isDone, result.result, result.timeSpent, result.try, users.id AS userId, users.lastName, department.id, department.name  FROM result INNER JOIN users ON result.userID = users.id INNER JOIN department ON users.department = department.id ORDER BY result.[timestamp] DESC";
+            try
+            {
+                conn.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                {
+                    SQLiteDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        tests.Add(new Test()
+                        {
+                            
+                            Fail = dataReader.GetInt32(0),
+                            TestId = dataReader.GetInt32(1),
+                            Neutral = dataReader.GetInt32(2),
+                            Correct = dataReader.GetInt32(3),
+                            Timestamp = dataReader.GetDateTime(4),
+                            Result = dataReader.GetString(6),
+                            TimeSpend = dataReader.GetInt32(7),
+                            Try = dataReader.GetInt32(8),
+                            user = new User()
+                            {
+                                Id = dataReader.GetInt32(9),
+                                LastName = dataReader.GetString(10),
+                                department = new Department()
+                                {
+                                    Id = dataReader.GetInt32(11),
+                                    Name = dataReader.GetString(12),
+
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+            catch (Exception e) { throw e; }
+            finally
+            {
+                conn.Close();
+            }
+            return tests;
+        }
+
         public int insert(Test test)
         {
             int inserted = 0;
@@ -56,7 +149,7 @@ namespace testService.Services
                 conn.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@userId", test.UserId);
+                    command.Parameters.AddWithValue("@userId", test.user.Id);
                     command.Parameters.AddWithValue("@testId", test.TestId);
                     command.Parameters.AddWithValue("@fail", test.Fail);
                     command.Parameters.AddWithValue("@try", test.Try);

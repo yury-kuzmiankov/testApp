@@ -8,7 +8,7 @@ namespace testService.Models
     public class Test
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public User user { get; set; }
         public int TestId { get; set; }
         public int Fail { get; set; }
         public int Correct { get; set; }

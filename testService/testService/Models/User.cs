@@ -12,7 +12,7 @@ namespace testService.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
-        public int Role { get; set; }
-        public int Department { get; set; }
+        public Role Role { get; set; }
+        public Department department{ get; set; }
     }
 }

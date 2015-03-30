@@ -20,6 +20,20 @@ namespace testService.Controllers
             return Json(tests, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult getTestsByDepartment(int id)
+        {
+            TestService service = new TestService();
+            List<Test> tests = service.getTestsByDepartment(id);
+            return Json(tests, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult getTests()
+        {
+            TestService service = new TestService();
+            List<Test> tests = service.getTests();
+            return Json(tests, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult insert(List<Test> results)
         {
             int count = 0;

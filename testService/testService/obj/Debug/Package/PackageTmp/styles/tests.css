@@ -1,0 +1,204 @@
+/* colors directive */
+colors ul li{
+	display: inline-block;
+	height: 100px;
+	width: 50px;
+	margin-right: 20px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+colors ul li.selected{
+	display: none;
+}
+
+digits table{
+	border-spacing: 7px;
+	border-collapse: separate;
+	margin: 0 auto;
+}
+
+digits td{
+	padding: 10px;
+	font-size: 20px;
+	text-align: center;
+	border: 3px solid #fff;
+}
+
+digits td.selected{
+	border: 3px solid #4285f4;
+	border-radius: 5px;
+}
+
+figures li{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin: 20px 50px;
+    cursor: pointer;
+}
+
+figures li.selected{
+    visibility: hidden;
+}
+
+figures .square{
+    background: blue;
+}
+
+figures .rectangle{
+    background: blue;
+    width: 100px;
+}
+
+figures .triangle{
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 200px solid blue;
+}
+
+figures .circle{
+     background: blue;
+     -moz-border-radius:100px;
+     -webkit-border-radius: 100px;
+     border-radius: 100px;
+}
+
+figures .line{
+	background: url('/images/line.png') no-repeat center;
+	background-size: contain;
+}
+
+phrase .phrase{
+	font-size: 200%;
+	color: #097e09;
+}
+phrase .phrase .highlight{
+	color: #00FF00;
+}
+phrase input{
+	opacity: 1;
+}
+
+fall .fallFigureContainer{
+	position: relative;
+	height: 500px;
+}
+
+fall .fallFigureContainer .rectangle{
+	position: relative;
+	margin: 0 auto;
+	width: 50px;
+	height: 100px;
+	background: grey;
+	border: 1px solid blue;
+	transition: top 0.1s;
+	z-index: 10;
+}
+
+fall .fallFigureContainer .limit{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	height: 20px;
+	background: blue;
+}
+
+fall input{
+	opacity: 0;
+}
+
+compare .btn{
+    width: 140px;
+}
+
+compare .btn.equal{
+    margin-right: 20px;
+}
+
+sum table{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+sum .description{
+    padding: 0 20%;
+}
+
+sum input{
+    width: 50px;
+}
+
+random span{
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+mistake span{
+	display: block;
+	font-size: 20px;
+}
+
+maze .tableContainer{
+	position: relative;
+}
+
+maze table{
+	table-layout: fixed;
+	margin: 0 auto;
+	text-align: center;
+}
+
+maze table td{
+	width: 30px;
+	height: 30px;
+}
+
+maze .circle{
+	position: relative;
+	top : 0;
+	left : 0;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background-color: red;
+	transition: all 0.08s;
+	cursor: pointer;
+}
+
+words textarea{
+    width: 100%;
+    height: 200px;
+}
+
+maze .path td{
+	width: 50px;
+	height: 50px;
+}
+
+maze table.active .circle{
+	position: fixed;
+}
+
+strings .text-success{
+	font-size: 20px;
+}
+
+questions span{
+	font-size: 20px;
+	display: block;
+}
+
+nvd3-pie-chart{
+	display: block;
+}
+
+nvd3-pie-chart svg{
+	display: inline-block;
+	width: 500px;
+	height: 500px;
+}

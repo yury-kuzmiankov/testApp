@@ -21,7 +21,7 @@ namespace testService.Services
         public List<User> getUsers()
         {
             List<User> users = new List<User>();
-            string query = "SELECT id, name, firstName, lastName, role, department FROM users";
+            string query = "SELECT users.id, users.name, users.firstName, users.lastName, role.id AS roleId, role.name AS roleName, department.id AS depId, department.name AS depName FROM department INNER JOIN role ON department.id = role.id INNER JOIN users ON department.id = users.department AND role.id = users.role ORDER BY users.lastName ASC";
             try
             {
                 conn.Open();
@@ -32,12 +32,21 @@ namespace testService.Services
                     {
                         users.Add(new User()
                         {
+                            
                             Id = dataReader.GetInt32(0),
                             Name = dataReader.GetString(1),
                             FirstName = dataReader.GetString(2),
                             LastName = dataReader.GetString(3),
-                            Role = dataReader.GetInt32(4),
-                            Department = dataReader.GetInt32(5)
+                            Role = new Role()
+                            {
+                                Id = dataReader.GetInt32(4),
+                                Name = dataReader.GetString(5)
+                            },
+                            department = new Department()
+                            {
+                                Id = dataReader.GetInt32(6),
+                                Name = dataReader.GetString(7)
+                            }
                         });
                     }
                 }
@@ -54,7 +63,7 @@ namespace testService.Services
         public List<User> getUserById(string id)
         {
             List<User> users = new List<User>();
-            string query = "SELECT id, name, firstName, lastName, role, department FROM users where users.id=@id";
+              string query = "SELECT users.id, users.name, users.firstName, users.lastName, role.id AS roleId, role.name AS roleName, department.id AS depId, department.name AS depName FROM department INNER JOIN role ON department.id = role.id INNER JOIN users ON department.id = users.department AND role.id = users.role where users.id=@id";
              try
             {
                 conn.Open();
@@ -66,12 +75,21 @@ namespace testService.Services
                     {
                         users.Add(new User()
                         {
+
                             Id = dataReader.GetInt32(0),
                             Name = dataReader.GetString(1),
                             FirstName = dataReader.GetString(2),
                             LastName = dataReader.GetString(3),
-                            Role = dataReader.GetInt32(4),
-                            Department = dataReader.GetInt32(5)
+                            Role = new Role()
+                            {
+                                Id = dataReader.GetInt32(4),
+                                Name = dataReader.GetString(5)
+                            },
+                            department = new Department()
+                            {
+                                Id = dataReader.GetInt32(6),
+                                Name = dataReader.GetString(7)
+                            }
                         });
                     }
                 }
@@ -87,7 +105,7 @@ namespace testService.Services
         public User getUserByNamePassword(string name, String password)
         {
             User user = null;
-            string query = "SELECT id, name, firstName, lastName, role, department FROM users where users.name=@name and users.password=@password";
+              string query = "SELECT users.id, users.name, users.firstName, users.lastName, role.id AS roleId, role.name AS roleName, department.id AS depId, department.name AS depName FROM department INNER JOIN role ON department.id = role.id INNER JOIN users ON department.id = users.department AND role.id = users.role where users.name=@name and users.password=@password";
             try
             {
                 conn.Open();
@@ -100,12 +118,21 @@ namespace testService.Services
                     {
                         user = new User()
                         {
+
                             Id = dataReader.GetInt32(0),
                             Name = dataReader.GetString(1),
                             FirstName = dataReader.GetString(2),
                             LastName = dataReader.GetString(3),
-                            Role = dataReader.GetInt32(4),
-                            Department = dataReader.GetInt32(5)
+                            Role = new Role()
+                            {
+                                Id = dataReader.GetInt32(4),
+                                Name = dataReader.GetString(5)
+                            },
+                            department = new Department()
+                            {
+                                Id = dataReader.GetInt32(6),
+                                Name = dataReader.GetString(7)
+                            }
                         };
                     }
                 }
@@ -122,7 +149,7 @@ namespace testService.Services
         public User userExists(string name)
         {
             User user = null;
-            string query = "SELECT id, name, firstName, lastName, role, department FROM users where users.name=@name";
+              string query = "SELECT users.id, users.name, users.firstName, users.lastName, role.id AS roleId, role.name AS roleName, department.id AS depId, department.name AS depName FROM department INNER JOIN role ON department.id = role.id INNER JOIN users ON department.id = users.department AND role.id = users.role where users.name=@name";
             try {
                 conn.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, conn))
@@ -133,12 +160,21 @@ namespace testService.Services
                     {
                         user = new User()
                         {
+
                             Id = dataReader.GetInt32(0),
                             Name = dataReader.GetString(1),
                             FirstName = dataReader.GetString(2),
                             LastName = dataReader.GetString(3),
-                            Role = dataReader.GetInt32(4),
-                            Department = dataReader.GetInt32(5)
+                            Role = new Role()
+                            {
+                                Id = dataReader.GetInt32(4),
+                                Name = dataReader.GetString(5)
+                            },
+                            department = new Department()
+                            {
+                                Id = dataReader.GetInt32(6),
+                                Name = dataReader.GetString(7)
+                            }
                         };
                     }
                 }
