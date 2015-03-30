@@ -4,7 +4,6 @@
     <span class="text-success" ng-show="!isShowAnswer" ng-bind="test.text"></span>
     <input type="text" ng-model="answer" ng-show="isShowAnswer" placeholder="Введите ответ…"/>
     <hr>
-    <a class="btn btn-lg btn-success" ng-show="!isShowAnswer" ng-bind="question.controlTitle" ng-click="stop()"></a>
-    <a class="btn btn-lg btn-success" ng-show="isShowAnswer" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
+    <a class="btn btn-lg btn-success" ng-show="isShowAnswer" ng-bind="question.controlTitle" ng-click="handleResults()"></a>
   </div>
 </div>

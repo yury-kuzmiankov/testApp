@@ -110,7 +110,7 @@ angular.module('libraryApp')
                         Neutral: 0,
                         Try: $scope.tried + 1,
                         Result: result,
-                        Timestamp: new Date,
+                        Timestamp: new Date(),
                         TimeSpend: timeSpend,
                         isDone: true
                     });

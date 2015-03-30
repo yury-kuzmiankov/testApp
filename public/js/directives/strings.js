@@ -16,22 +16,19 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/strings.html',
-            controller: function($scope, $interval, $location) {
-                $scope.array = $scope.question.options;
-                $scope.progress = 1;
-                $scope.fails = 2;
+            controller: function($scope, $timeout) {
                 $scope.answer = null;
                 $scope.isShowAnswer = false;
 
                 $scope.initTimer = function(){
-                    this.timer = $interval(function(){
-                        $scope.next();
-                    }, this.progress * 1000);
+                    this.timer = $timeout(function(){
+                        $scope.isShowAnswer = true;
+                    }, 33000);
                 };
 
                 $scope.changeText = function(){
-                    var rand = randomService.getRandomInt(0, this.array.length - 1);
-                    this.test = $scope.array[rand];
+                    var rand = randomService.getRandomInt(0, this.question.options.length - 1);
+                    this.test = $scope.question.options[rand];
                 };
 
                 $scope.start = function(){
@@ -40,28 +37,35 @@ angular.module('libraryApp')
                 };
                 $scope.start();
 
-                $scope.next = function() {
-                    $interval.cancel(this.timer);
-                    this.initTimer();
-                    this.changeText();
-                    this.fails++;
-                    this.progress++;
-                };
-
-                $scope.stop = function() {
-                    $interval.cancel(this.timer);
-                    this.isShowAnswer = true;
+                $scope.getResult = function(answer) {
+                    var results = [
+                        "Высокий результат", "Средний результат", "Низкий результат"
+                    ];
+                    var result = 0;
+                    switch (true) {
+                        case (answer == 5):
+                            result = results[0];
+                            break;
+                        case (answer == 4):
+                            result = results[1];
+                            break;
+                        default :
+                            result = results[2];
+                    }
+                    return result;
                 };
 
                 $scope.handleResults = function() {
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
-                        }
-                    });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
-                    $location.path($scope.nextaction);
+                    $scope.$emit("testDone", {
+                        Fail: 0,
+                        Correct: $scope.answer,
+                        Neutral: 0,
+                        Try: 1,
+                        Result: $scope.getResult(parseInt($scope.answer, 10)),
+                        Timestamp: new Date(),
+                        TimeSpend: 33,
+                        isDone: true
+                    })
                 };
             }
         }

@@ -23,6 +23,7 @@ angular.module('libraryApp')
                 $scope.startTime = new Date().getTime();
                 $scope.checkKey = function(){
                     var text = this.typed;
+                    var isFailed = false;
                     for(var i = 0; i < text.length; i++){
                         if(this.phrase[i].char ===  text.charAt(i)){
                             this.phrase[i].highlight = "highlight";
@@ -30,8 +31,12 @@ angular.module('libraryApp')
                             $scope.phrase = randomService.getPhrase(11);
                             $scope.typed = "";
                             this.fail++;
+                            isFailed = true;
                             break;
                         }
+                    }
+                    if(text.length == this.phrase.length && !isFailed){
+                        this.handleResults();
                     }
                 };
                 $scope.focusElement = function(){
@@ -40,13 +45,16 @@ angular.module('libraryApp')
                 };
                 $scope.focusElement();
                 $scope.handleResults = function() {
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                       if(option.isSelected){
-                           selectedCount++;
-                       }
+                    $scope.$emit("testDone", {
+                        Fail: $scope.fail,
+                        Correct: $scope.phrase == $scope.typed,
+                        Neutral: 0,
+                        Try: $scope.fail + 1,
+                        Result: "",
+                        Timestamp: new Date(),
+                        TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                        isDone: true
                     });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
                 };
             }
         }

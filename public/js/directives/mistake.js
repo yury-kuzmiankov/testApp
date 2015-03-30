@@ -44,14 +44,24 @@ angular.module('libraryApp')
 
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
-                        }
+                    var correct = false;
+                    var original = 0;
+                    angular.forEach($scope.blocks, function(block){
+                        original+= block.mistakes;
                     });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
-                    $location.path($scope.nextaction);
+                    if($scope.answer == original){
+                        correct = true;
+                    }
+                    $scope.$emit("testDone", {
+                        Fail: correct ? 0 : 1,
+                        Correct: correct ? 1 : 0,
+                        Neutral: 0,
+                        Try: 1,
+                        Result: correct ? "Правильно" : "Неправильно",
+                        Timestamp: new Date(),
+                        TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                        isDone: true
+                    });
                 };
             }
         }

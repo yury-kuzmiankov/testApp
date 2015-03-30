@@ -16,9 +16,11 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/compare.html',
-            controller: function($scope, $element) {
+            controller: function($scope) {
+                $scope.original = [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true];
                 $scope.results = [];
                 $scope.imageurl = null;
+                $scope.startTime = new Date().getTime();
 
                 $scope.setImage = function(){
                   this.imageurl = this.results.length + 1;
@@ -37,15 +39,36 @@ angular.module('libraryApp')
                         this.handleResults();
                     }
                 };
-                $scope.handleResults = function() {
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
+
+                $scope.getResult = function() {
+                    var fullResult = {
+                        result : "",
+                        fail : 0,
+                        correct : 0
+                    };
+                    angular.forEach($scope.results, function(result, index){
+                        if(result != $scope.original[index]){
+                            fullResult.fail++;
+                        }else{
+                            fullResult.correct++;
                         }
                     });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
-                    $location.path($scope.nextaction);
+                    fullResult.result = Math.floor(fullResult.correct / (fullResult.fail + fullResult.correct) * 100) + "% правильных";
+                    return fullResult;
+                };
+
+                $scope.handleResults = function() {
+                    var result = $scope.getResult();
+                    $scope.$emit("testDone", {
+                        Fail: result.fail,
+                        Correct: result.correct,
+                        Neutral: 0,
+                        Try: result.correct + result.fail,
+                        Result: result.result,
+                        Timestamp: new Date(),
+                        TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                        isDone: true
+                    });
                 };
             }
         }

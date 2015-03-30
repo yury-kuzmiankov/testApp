@@ -16,7 +16,8 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/random.html',
-            controller: function($scope, $interval, $location) {
+            controller: function($scope, $interval) {
+                $scope.startTime = new Date().getTime();
                 $scope.answer = "";
                 $scope.isShowAnswer = false;
                 $scope.initTimer = function(){
@@ -39,13 +40,23 @@ angular.module('libraryApp')
 
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
-                        }
+                    var fail = 0;
+                    var correct = 0;
+                    if($scope.answer == $scope.arrayResult){
+                        correct++;
+                    }else{
+                        fail++;
+                    }
+                    $scope.$emit("testDone", {
+                        Fail: fail,
+                        Correct: correct,
+                        Neutral: 0,
+                        Try: 1,
+                        Result: correct ? "Правильно" : "Неправильно",
+                        Timestamp: new Date(),
+                        TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                        isDone: true
                     });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
                 };
             }
         }

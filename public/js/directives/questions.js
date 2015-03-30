@@ -16,11 +16,12 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/questions.html',
-            controller: function($scope, $interval, $location) {
+            controller: function($scope, $interval, authService) {
                 $scope.results = [];
                 $scope.answer = "";
                 $scope.text = "";
                 $scope.progress = 0;
+                $scope.startTime = new Date().getTime();
 
                 $scope.init = function(){
                   this.timerValues = [15000, 5000, 5000, 7000, 15000];
@@ -107,6 +108,7 @@ angular.module('libraryApp')
                             this.waitValue = this.getCharByPos(numberFirst, initValues.name) + this.getCharByPos(numberSecond, initValues.month);
                             break;
                         case 1 :
+                            var user = authService.getUserData();
                             var name = "ЮРА";
                             var date = new Date();
                             var today = date.getDay();
@@ -162,16 +164,51 @@ angular.module('libraryApp')
                 };
                 $scope.next();
 
+                $scope.getResult = function(fail) {
+                    var results = [
+                        "Высокая лабильность", "Средняя лабильность", "Низкая лабильность", "Мало успешен в любой деятельности"
+                    ];
+                    var result = "";
+                    switch (true) {
+                        case (fail == 0):
+                            result = results[0];
+                            break;
+                        case (fail == 1):
+                            result = results[1];
+                            break;
+                        case (fail == 2) :
+                            result = results[2];
+                            break;
+                        default :
+                            result = results[3];
+                    }
+                    return result;
+                };
+
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
+                    var result = {
+                        fail : 0,
+                        correct : 0 
+                    };
+                    angular.forEach($scope.results, function(value) {
+                        if(value){
+                            result.correct++;
+                        }else{
+                            result.fail++;
                         }
                     });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
-                    $location.path($scope.nextaction);
+                    $scope.$emit("testDone", {
+                       Fail : result.fail,
+                       Correct : result.correct,
+                       Neutral : 0,
+                       Try : 1,
+                       Result : $scope.getResult(result.fail),
+                       Timestamp: new Date(),
+                       TimeSpend : Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                       isDone : true
+                    });
+                    //$location.path($scope.nextaction);
                 };
             }
         }

@@ -16,10 +16,12 @@ angular.module('libraryApp')
                 nextaction : '@'
             },
             templateUrl: 'templates/maze.html',
-            controller: function($scope, $element, $interval, $location) {
+            controller: function($scope, $element, $timeout) {
+                $scope.startTime = new Date().getTime();
                 $scope.fails = 0;
                 $scope.traking = false;
                 $scope.cellSize = 30;
+                $scope.limit = 60000;
                 $scope.sides = {
                     top : "border-top",
                     left : "border-right"
@@ -102,6 +104,18 @@ angular.module('libraryApp')
                 $scope.init = function(){
                     if($scope.question.additional.type == "maze"){
                         $scope.initMaze();
+                        var rand = randomService.getRandomInt(0, 2);
+                        $scope.size = $scope.question.additional.size[rand];
+                        switch ($scope.size) {
+                            case "big":
+                                $scope.limit = 60000;
+                                break;
+                            case "middle":
+                                $scope.limit = 120000;
+                                break;
+                            default :
+                                $scope.limit = 180000;
+                        }
                     }else{
                         $scope.initPath();
                     }
@@ -110,9 +124,9 @@ angular.module('libraryApp')
                 $scope.init();
 
                 $scope.initTimer = function(){
-                    this.timer = $interval(function(){
+                    this.timer = $timeout(function(){
                         $scope.handleResults();
-                    }, 1160000);
+                    }, $scope.limit);
                 };
                 $scope.initTimer();
 
@@ -122,7 +136,7 @@ angular.module('libraryApp')
                         $scope.circle = $element[0].querySelector('.circle');
                         $scope.fails++;
                         var table = $element[0].querySelector('table');
-                        $scope.addClass(table, 'active');
+                        //$scope.addClass(table, 'active');
 
                     }
                 };
@@ -270,16 +284,81 @@ angular.module('libraryApp')
                     return style;
                 };
 
-                $scope.handleResults = function() {
-                    $interval.cancel(this.timer);
-                    var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
+                $scope.getResult = function(fail, result) {
+                    var results = [
+                        "Высокий результат", "Средний результат", "Низкий результат", "Не пройден"
+                    ];
+                    var result = "";
+                    if($scope.question.additional.type == "maze"){
+                        if(result){
+                            result = results[3];
+                        }else{
+                            switch ($scope.size) {
+                                case "big":
+                                    switch (true) {
+                                        case (fail < 2):
+                                            result = results[0];
+                                            break;
+                                        case (fail == 2):
+                                            result = results[1];
+                                            break;
+                                        case (fail < 6):
+                                            result = results[2];
+                                            break;
+                                        default :
+                                            result = results[3];
+                                    }
+                                    break;
+                                case "middle":
+                                    switch (true) {
+                                        case (fail == 0):
+                                            result = results[0];
+                                            break;
+                                        case (fail == 1):
+                                            result = results[1];
+                                            break;
+                                        case (fail < 4):
+                                            result = results[2];
+                                            break;
+                                        default :
+                                            result = results[3];
+                                    }
+                                    break;
+                                default :
+                                    switch (true) {
+                                        case (fail == 0):
+                                            result = results[0];
+                                            break;
+                                        case (fail == 1):
+                                            result = results[1];
+                                            break;
+                                        case (fail == 2):
+                                            result = results[2];
+                                            break;
+                                        default :
+                                            result = results[3];
+                                    }
+                            }
                         }
-                    });
-                    $scope.question.results = selectedCount / $scope.question.options.length;
-                    $location.path($scope.nextaction);
+                    }else{
+                        result = results[2];
+                    }
+                    return result;
+                };
+
+                $scope.handleResults = function() {
+                    $timeout.cancel(this.timer);
+                    $scope.fails--;
+                    $scope.$emit("testDone", {
+                        Fail: $scope.fails,
+                        Correct: $scope.result ? 1 : 0,
+                        Neutral: 0,
+                        Try: $scope.fails == 0 ? 1 : $scope.fails,
+                        Result: $scope.getResult($scope.fails, $scope.result),
+                        Timestamp: new Date,
+                        TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                        isDone: true
+                    })
                 };
             }
         }

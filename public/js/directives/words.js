@@ -97,7 +97,7 @@ angular.module('libraryApp')
                         Neutral: 0,
                         Try: 1,
                         Result: $scope.getResult($scope.result),
-                        Timestamp: new Date,
+                        Timestamp: new Date(),
                         TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
                         isDone: true
                     })
