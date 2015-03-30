@@ -19,5 +19,16 @@ namespace testService.Controllers
             List<Test> tests = service.getTestsByUser(id);
             return Json(tests, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult insert(List<Test> results)
+        {
+            int count = 0;
+            TestService service = new TestService();
+            foreach (Test result in results)
+            {
+                count += service.insert(result);
+            }
+            return Json(count, JsonRequestBehavior.AllowGet);
+        }
     }
 }

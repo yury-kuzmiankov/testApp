@@ -10,6 +10,9 @@
 angular.module('libraryApp')
   .controller('MainCtrl', function ($scope, $modal, $rootScope, testFactory, authService, $location, helper) {
       $scope.currentTest = helper.storage.get("currentTest");
+      //reset done
+      //$scope.currentTest.isDone = false;
+      //helper.storage.set("currentTest", $scope.currentTest);
       $scope.$on('userChanged', function () {
           $scope.updateUser();
       });

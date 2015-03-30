@@ -11,9 +11,12 @@ namespace testService.Models
         public int UserId { get; set; }
         public int TestId { get; set; }
         public int Fail { get; set; }
+        public int Correct { get; set; }
+        public int Neutral { get; set; }
         public int Try { get; set; }
-        public string result { get; set; }
-        public DateTime dateTime { get; set; }
+        public string Result { get; set; }
+        public DateTime Timestamp { get; set; }
+        public int TimeSpend { get; set; }
         public int IsDone { get; set; }
     }
 }

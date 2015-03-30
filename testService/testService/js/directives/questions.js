@@ -21,6 +21,7 @@ angular.module('libraryApp')
                 $scope.answer = "";
                 $scope.text = "";
                 $scope.progress = 0;
+                $scope.startTime = new Date().getTime();
 
                 $scope.init = function(){
                   this.timerValues = [15000, 5000, 5000, 7000, 15000];
@@ -165,13 +166,28 @@ angular.module('libraryApp')
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
                     var selectedCount = 0;
-                    angular.forEach($scope.question.options, function(option) {
-                        if(option.isSelected){
-                            selectedCount++;
+                    var result = {
+                        fail : 0,
+                        correct : 0 
+                    };
+                    angular.forEach($scope.results, function(value) {
+                        if(value){
+                            result.correct++;
+                        }else{
+                            result.fail++;
                         }
                     });
-                    $scope.question.results = $scope.results;
-                    $location.path($scope.nextaction);
+                    $scope.$emit("testDone", {
+                       Fail : result.fail,
+                       Correct : result.correct,
+                       Neutral : 0,
+                       Try : 1,
+                       Result : "",
+                       Timestamp: new Date,
+                       TimeSpend : Math.floor((new Date().getTime() - $scope.startTime) / 1000),
+                       isDone : true
+                    });
+                    //$location.path($scope.nextaction);
                 };
             }
         }

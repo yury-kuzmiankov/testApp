@@ -8,16 +8,19 @@
  * Controller of the yomanAppApp
  */
 angular.module('libraryApp')
-  .controller('TestCtrl', function ($scope, testFactory, $routeParams, $location, chartService, helper, randomService) {
+  .controller('TestCtrl', function ($scope, testFactory, $routeParams, $location, chartService, helper, randomService, authService) {
+      $scope.$on('testDone', function (event, result) {
+          var progress = $scope.progress;
+          var questionId = $scope.questionId;
+          $scope.currentTest.tests[progress].result = result
+          $scope.currentTest.tests[progress].isDone = true;
+          helper.storage.set("currentTest", $scope.currentTest);
+          $location.path("/test/" + progress + "/question/" + questionId + "/result");
+      });
       testFactory.getTests().then(function (data) {
           $scope.data = data;
-          testFactory.getTestsByUser().then(function (data) {
-              $scope.prevTests = data;
-              $scope.currentTest = helper.storage.get("currentTest");
-              if (!$scope.currentTest) {
-                  $scope.currentTest = genTest();
-                  helper.storage.set("currentTest", $scope.currentTest);
-              }
+          $scope.currentTest = helper.storage.get("currentTest");
+          if ($scope.currentTest) {
               $scope.data.tests = $scope.currentTest.tests;
               if ($routeParams.testId === undefined) {
                   //go to first test
@@ -25,21 +28,34 @@ angular.module('libraryApp')
               } else {
                   testParser();
               }
-          });
+          } else {
+              testFactory.getTestsByUser().then(function (data) {
+                  $scope.prevTests = data;
+                  $scope.currentTest = genTest();
+                  helper.storage.set("currentTest", $scope.currentTest);
+                  $scope.data.tests = $scope.currentTest.tests;
+                  if ($routeParams.testId === undefined) {
+                      //go to first test
+                      $location.path("/test/0/question/0/prepare");
+                  } else {
+                      testParser();
+                  }
+              });
+          }
+
 
       });
 
       var genTest = function () {
           var test = {
               isDone: false,
-              date: new Date(),
               tests: []
           };
           var allTests = $scope.data.tests;
           var prevTests = $scope.prevTests;
           var possible = [];
           angular.forEach(prevTests, function (prevTest) {
-              for(var i = 0; i < allTests.lenght; i++) {
+              for (var i = 0; i < allTests.lenght; i++) {
                   if (prevTest.Id == allTests[i].id) {
                       allTests.slice(index, 1);
                       break;
@@ -123,6 +139,22 @@ angular.module('libraryApp')
       };
 
       var redirectToMainResult = function (data) {
+          if (!$scope.currentTest.isDone) {
+              $scope.currentTest.isDone = false;
+              helper.storage.set("currentTest", $scope.currentTest);
+              var results = [];
+              var user = authService.getUserData();
+              angular.forEach($scope.currentTest.tests, function (test) {
+                  test.result.UserId = user.Id;
+                  test.result.TestId = test.id;
+                  results.push(test.result);
+              });
+              testFactory.saveTestsResults(results).then(function (data) {
+                  console.log("success");
+              }, function (data) {
+                  console.log("error");
+              });
+          }
           $location.path("/test/" + data.progress + "/summary");
       };
   });

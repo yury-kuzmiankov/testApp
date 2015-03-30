@@ -38,6 +38,21 @@ angular.module('libraryApp')
               return this.prevTests;
           },
 
+          saveTestsResults: function (data) {
+              return $http({
+                  method: 'POST',
+                  url: '/test/insert',
+                  data: data
+              }).then(function (response) {
+                  var data = response.data;
+                  if (data) {
+                      
+                  } else {
+                      return $q.reject(data);
+                  }
+              });
+          },
+
           getDepartments: function () {
               var deferred = $q.defer();
 
