@@ -9,11 +9,11 @@
  */
 angular.module('libraryApp')
   .controller('LoginCtrl', function ($scope, $modalInstance, authService, $rootScope, $location, testFactory, $modal) {
-      testFactory.getDepartments().then(function (data) {
-          $scope.departments = data;
-          $scope.departmentDef = data[0];
-      });
-      $scope.signin = function () {
+        testFactory.getDepartments().then(function (data) {
+            $scope.departments = data;
+            $scope.departmentDef = data[0];
+        });
+        $scope.signin = function () {
           $scope.authInProgress = true;
           $rootScope.errorWithCredentials = null;
           $scope.error = null;

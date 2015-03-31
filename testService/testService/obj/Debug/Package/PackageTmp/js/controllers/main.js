@@ -9,24 +9,25 @@
  */
 angular.module('libraryApp')
   .controller('MainCtrl', function ($scope, $modal, $rootScope, testFactory, authService, $location, helper) {
-      $scope.currentTest = helper.storage.get("currentTest");
       //reset done
       //$scope.currentTest.isDone = false;
       //helper.storage.set("currentTest", $scope.currentTest);
-     // helper.storage.set("currentTest", null);
+
       $scope.$on('userChanged', function () {
           $scope.updateUser();
+          authService.checkCurrentTest();
       });
       $scope.$on('testDone', function () {
-          $scope.currentTest = helper.storage.get("currentTest");
+          $scope.currentTest = helper.storage.get("currentTest" + $scope.user.Id);
       });
       $scope.updateUser = function () {
-          if ($rootScope.global && $rootScope.global.isAuthN) {
-              $scope.user = $rootScope.global.currentUser;
+          $scope.user = authService.getUserData();
+          if ($scope.user) {
               $scope.isAuth = true;
+              $scope.currentTest = helper.storage.get("currentTest" + $scope.user.Id);
           } else {
-              $scope.user = null;
               $scope.isAuth = false;
+              $scope.currentTest = null;
           }
       };
       $scope.updateUser();

@@ -66,6 +66,24 @@ angular.module('libraryApp').factory('authService', [
             logout: function () {
                 clearSession();
                 $rootScope.$broadcast('userChanged');
+            },
+            checkCurrentTest: function () {
+                if(_user){
+                    var currentTest = helper.storage.get("currentTest" + _user.Id);
+                    if (currentTest) {
+                        var dateNow = new Date();
+                        dateNow = dateNow.setHours(0, 0, 0, 0);
+                        dateNow = new Date(dateNow);
+                        var dateTest = new Date(currentTest.date);
+                        dateTest = dateTest.setHours(0, 0, 0, 0);
+                        dateTest = new Date(dateTest);
+                        var timeDiff = Math.abs(dateNow.getTime() - dateTest.getTime());
+                        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                        if (diffDays > 0) {
+                            helper.storage.remove("currentTest");
+                        }
+                    }
+                }
             }
         };
     }

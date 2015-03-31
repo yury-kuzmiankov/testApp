@@ -18,3 +18,5 @@ E:\testApp\testApp\testService\testService\bin\System.Web.Razor.xml
 E:\testApp\testApp\testService\testService\bin\System.Web.WebPages.xml
 E:\testApp\testApp\testService\testService\bin\System.Web.WebPages.Deployment.xml
 E:\testApp\testApp\testService\testService\bin\System.Web.WebPages.Razor.xml
+E:\testApp\testApp\testService\testService\bin\System.Web.Providers.dll
+E:\testApp\testApp\testService\testService\bin\System.Web.Providers.xml

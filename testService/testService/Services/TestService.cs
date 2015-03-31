@@ -5,30 +5,32 @@ using System.Web;
 using testService.Models;
 using System.Data.SQLite;
 using System.Web.Hosting;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace testService.Services
 {
     public class TestService
     {
-        SQLiteConnection conn = null;
+        string path = "";
 
         public TestService()
         {
-            string path = HostingEnvironment.ApplicationPhysicalPath;
-            conn = new SQLiteConnection("Data Source=" + path + "base\\testBase;Version=3;Password=!0232Bqdhai;");
+            path ="Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True;User Instance=True";
         }
 
         public List<Test> getTestsByUser(int id)
         {
             List<Test> tests = new List<Test>();
-            string query = "SELECT id, testId FROM result WHERE(userID = @id) ORDER BY timestamp DESC LIMIT 12";
+            SqlConnection conn = new SqlConnection(path);
+            string query = "SELECT TOP 10 id, testId FROM result WHERE(userID = @id) ORDER BY timestamp";
             try
             {
                 conn.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    SQLiteDataReader dataReader = command.ExecuteReader();
+                    SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
                         tests.Add(new Test()
@@ -50,14 +52,15 @@ namespace testService.Services
         public List<Test> getTestsByDepartment(int id)
         {
             List<Test> tests = new List<Test>();
+            SqlConnection conn = new SqlConnection(path);
             string query = "SELECT result.fail, result.testId, result.neutral, result.correct, result.[timestamp], result.isDone, result.result, result.timeSpent, result.try, users.id AS userId, users.lastName, department.id, department.name  FROM result INNER JOIN users ON result.userID = users.id INNER JOIN department ON users.department = department.id WHERE (department.id = @id) ORDER BY result.[timestamp] DESC";
             try
             {
                 conn.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    SQLiteDataReader dataReader = command.ExecuteReader();
+                    SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
                         tests.Add(new Test()
@@ -97,13 +100,14 @@ namespace testService.Services
         public List<Test> getTests()
         {
             List<Test> tests = new List<Test>();
-            string query = "SELECT result.fail, result.testId, result.neutral, result.correct, result.[timestamp], result.isDone, result.result, result.timeSpent, result.try, users.id AS userId, users.lastName, department.id, department.name  FROM result INNER JOIN users ON result.userID = users.id INNER JOIN department ON users.department = department.id ORDER BY result.[timestamp] DESC";
+            SqlConnection conn = new SqlConnection(path);
+            string query = "SELECT result.fail, result.testId, result.neutral, result.correct, result.[timestamp],  result.isDone, result.result, result.timeSpent, result.try, users.id AS userId, users.lastName, department.id, department.name  FROM result INNER JOIN users ON result.userID = users.id INNER JOIN department ON users.department = department.id ORDER BY result.[timestamp] DESC";
             try
             {
                 conn.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                using (SqlCommand command = new SqlCommand(query, conn))
                 {
-                    SQLiteDataReader dataReader = command.ExecuteReader();
+                    SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
                         tests.Add(new Test()
@@ -143,11 +147,12 @@ namespace testService.Services
         public int insert(Test test)
         {
             int inserted = 0;
+            SqlConnection conn = new SqlConnection(path);
             string query = "INSERT INTO result (userID, testId, fail, try, timeSpent, result, isDone, [timestamp], correct, neutral) VALUES (@userId, @testId, @fail, @try,@timeSpend,@result,@isDone,@timestamp,@correct,@neutral);";
             try
             {
                 conn.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@userId", test.user.Id);
                     command.Parameters.AddWithValue("@testId", test.TestId);

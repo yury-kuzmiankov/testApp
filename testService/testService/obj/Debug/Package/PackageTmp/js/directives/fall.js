@@ -19,7 +19,8 @@ angular.module('libraryApp')
             controller: function($scope, $element, $interval) {
                 $scope.typed = "";
                 $scope.attempt = 0;
-                $scope.rectanglePos = 0;
+                $scope.rectanglePos = '0px';
+                $scope.rectangleOriginal = 0;
                 $scope.limitY = 150;
                 $scope.results = [];
                 $scope.startTime = new Date().getTime();
@@ -31,8 +32,9 @@ angular.module('libraryApp')
                 };
                 $scope.startAttempt = function(){
                     $scope.timer = $interval(function(){
-                        if($scope.rectanglePos < 500){
-                            $scope.rectanglePos+= 5;
+                        if($scope.rectangleOriginal < 500){
+                            $scope.rectangleOriginal+= 5;
+                            $scope.rectanglePos = $scope.rectangleOriginal + 'px';
                         }else{
                             $interval.cancel($scope.timer);
                             $scope.nextAttempt();
@@ -42,10 +44,11 @@ angular.module('libraryApp')
                 $scope.startAttempt();
                 $scope.nextAttempt = function(){
                     if(this.attempt < 7){
-                        this.results.push($scope.rectanglePos);
+                        this.results.push($scope.rectangleOriginal);
                         this.attempt++;
                         this.startAttempt();
-                        this.rectanglePos = 0;
+                        this.rectanglePos = '0px';
+                        this.rectangleOriginal = 0;
                     }else{
                         this.handleResults();
                     }

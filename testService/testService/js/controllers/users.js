@@ -25,6 +25,14 @@ angular.module('libraryApp')
               });
           }
       };
+      $scope.prepareDepartments = function(deps){
+            angular.forEach(deps, function(dep){
+              $scope.departments.push({
+                  id : dep.Id,
+                  value : dep.Name
+              });
+            });
+      };
       testFactory.getDepartments().then(function (data) {
           $scope.departments = data;
           $scope.gridOptions = {
@@ -33,7 +41,7 @@ angular.module('libraryApp')
                   { name: 'Фамилия', field: 'LastName' },
                   { name: 'Имя', field: 'FirstName' },
                   { name: 'Отдел', field: 'department.Name', editableCellTemplate: 'ui-grid/dropdownEditor', width: '10%',
-                      editDropdownIdLabel : 'Id', editDropdownValueLabel: 'Name', editDropdownOptionsArray:   $scope.departments
+                      editDropdownIdLabel: 'value', editDropdownOptionsArray:   $scope.departments
                   },
                   { name: 'Роль', field: 'Role.Name', editableCellTemplate: 'ui-grid/dropdownEditor', width: '10%',
                       editDropdownIdLabel: 'value', editDropdownOptionsArray:  $scope.roles
