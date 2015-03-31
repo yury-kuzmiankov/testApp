@@ -47,6 +47,7 @@
                     <li><a href="#/" >Главная</a></li>
                     <li ng-show="isAuth"><a href="#/testresult">Результаты</a></li>
                     <li ng-show="isAuth"><a href="#/users">Пользователи</a></li>
+                    <li ng-show="isAuth"><a href="#/departments">Отделы</a></li>
 				    <li ng-show="!isAuth"><a href="javascript:void(0);" role="button" data-toggle="modal" ng-click="login()">Войти</a></li>
                     <li ng-show="!isAuth"><a href="javascript:void(0);" ng-click="openregister()">Регистрация</a></li>
                     <li ng-show="isAuth"><a href="javascript:void(0);" ng-click="logout()">Выйти</a></li>
@@ -73,6 +74,7 @@
     <script src="js/controllers/login.js"></script>
     <script src="js/controllers/testresult.js"></script>
     <script src="js/controllers/users.js"></script>
+    <script src="js/controllers/department.js"></script>
 
     <script src="js/services/test.js"></script>
     <script src="js/services/chartPreparer.js"></script>

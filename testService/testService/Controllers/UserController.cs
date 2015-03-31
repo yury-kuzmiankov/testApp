@@ -53,5 +53,18 @@ namespace testService.Controllers
             return Json(count, JsonRequestBehavior.AllowGet);
             
         }
+
+        [HttpPost]
+        public ActionResult update(User user)
+        {
+            UserService service = new UserService();
+            int count = 0;
+            if (user == null)
+            {
+                count = service.updateUser(user);
+            }
+            return Json(count, JsonRequestBehavior.AllowGet);
+
+        }
     }
 }

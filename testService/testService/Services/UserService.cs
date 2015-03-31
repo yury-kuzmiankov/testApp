@@ -215,5 +215,33 @@ namespace testService.Services
 
             return inserted;
         }
+
+        public int updateUser(User user)
+        {
+            int inserted = 0;
+            string query = "UPDATE users SET firstName = @firstName, lastName = @lastName, role = @roleid, department = @departmentid WHERE  (users.id = @id)";
+            try
+            {
+                conn.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", user.Id);
+                    command.Parameters.AddWithValue("@firstname", user.FirstName);
+                    command.Parameters.AddWithValue("@lastname", user.LastName);
+                    command.Parameters.AddWithValue("@departmentid", user.department.Id);
+                    command.Parameters.AddWithValue("@roleid", user.Role.Id);
+
+                    inserted = command.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception e) { throw e; }
+            finally
+            {
+                conn.Close();
+            }
+
+            return inserted;
+        }
     }
 }

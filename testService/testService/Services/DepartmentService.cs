@@ -46,5 +46,53 @@ namespace testService.Services
 
             return departments;
         }
-    }
+
+        public int insertDeparnment(Department department)
+        {
+            int inserted = 0 ;
+            string query = "INSERT INTO department(name) VALUES (@name);";
+            try {
+                conn.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@name", department.Name);
+                    inserted = command.ExecuteNonQuery();
+               
+                }
+            }
+            catch (Exception e) { throw e; }
+            finally
+            {
+                conn.Close();
+            }
+
+            return inserted;
+        }
+
+        public int updateDepartment(Department department)
+        {
+            int inserted = 0;
+            string query = "UPDATE department SET name = @name  WHERE  (department.id = @id)";
+            try
+            {
+                conn.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", department.Id);
+                    command.Parameters.AddWithValue("@name", department.Name);
+
+                    inserted = command.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception e) { throw e; }
+            finally
+            {
+                conn.Close();
+            }
+
+            return inserted;
+        }
+    };
+
 }

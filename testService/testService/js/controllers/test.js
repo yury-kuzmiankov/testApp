@@ -9,17 +9,18 @@
  */
 angular.module('libraryApp')
   .controller('TestCtrl', function ($scope, testFactory, $routeParams, $location, chartService, helper, randomService, authService) {
-      $scope.$on('testDone', function (event, result) {
+        $scope.user = authService.getUserData();
+        $scope.$on('testDone', function (event, result) {
           var progress = $scope.progress;
           var questionId = $scope.questionId;
           $scope.currentTest.tests[progress].result = result
           $scope.currentTest.tests[progress].isDone = true;
-          helper.storage.set("currentTest", $scope.currentTest);
+          helper.storage.set("currentTest" + $scope.user.Id, $scope.currentTest);
           $location.path("/test/" + progress + "/question/" + questionId + "/result");
       });
       testFactory.getTests().then(function (data) {
           $scope.data = data;
-          $scope.currentTest = helper.storage.get("currentTest");
+          $scope.currentTest = helper.storage.get("currentTest" + + $scope.user.Id);
           if ($scope.currentTest) {
               $scope.data.tests = $scope.currentTest.tests;
               if ($routeParams.testId === undefined) {
@@ -32,7 +33,7 @@ angular.module('libraryApp')
               testFactory.getTestsByUser().then(function (data) {
                   $scope.prevTests = data;
                   $scope.currentTest = genTest();
-                  helper.storage.set("currentTest", $scope.currentTest);
+                  helper.storage.set("currentTest" + + $scope.user.Id, $scope.currentTest);
                   $scope.data.tests = $scope.currentTest.tests;
                   if ($routeParams.testId === undefined) {
                       //go to first test
@@ -141,7 +142,7 @@ angular.module('libraryApp')
       var redirectToMainResult = function (data) {
           if (!$scope.currentTest.isDone) {
               $scope.currentTest.isDone = true;
-              helper.storage.set("currentTest", $scope.currentTest);
+              helper.storage.set("currentTest" + $scope.user.Id, $scope.currentTest);
               var results = [];
               var user = authService.getUserData();
               angular.forEach($scope.currentTest.tests, function (test) {

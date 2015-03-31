@@ -49,6 +49,10 @@ angular
           templateUrl: 'ng_views/users.html',
           controller: 'UserCtrl'
       })
+      .when('/departments', {
+          templateUrl: 'ng_views/department.html',
+          controller: 'DepartmentCtrl'
+      })
       .when('/error', {
           templateUrl: 'ng_views/error.html',
           controller: 'ErrorCtrl'
@@ -76,20 +80,7 @@ angular
               currentUser: authService.getUserData(),
               errorStack: []
           };
-          var currentTest = helper.storage.get("currentTest");
-          if (currentTest) {
-              var dateNow = new Date();
-              dateNow = dateNow.setHours(0, 0, 0, 0);
-              dateNow = new Date(dateNow);
-              var dateTest = new Date(currentTest.date);
-              dateTest = dateTest.setHours(0, 0, 0, 0);
-              dateTest = new Date(dateTest);
-              var timeDiff = Math.abs(dateNow.getTime() - dateTest.getTime());
-              var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-              if (diffDays > 0) {
-                  helper.storage.remove("currentTest");
-              }
-          }
+          authService.checkCurrentTest();
           $rootScope.global = global;
       }
     ]);
