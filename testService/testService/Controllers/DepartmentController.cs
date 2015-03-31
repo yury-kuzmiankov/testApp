@@ -25,7 +25,7 @@ namespace testService.Controllers
         {
             DepartmentService service = new DepartmentService();
             int count = 0;
-            if (department == null)
+            if (department != null)
             {
                 count = service.insertDeparnment(department);
             }
@@ -38,7 +38,7 @@ namespace testService.Controllers
         {
             DepartmentService service = new DepartmentService();
             int count = 0;
-            if (department == null)
+            if (department != null)
             {
                 count = service.updateDepartment(department);
             }

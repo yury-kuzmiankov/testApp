@@ -1,4 +1,14 @@
 <div class="panel-heading">Список отделов</div>
 <div class="panel-body text-center">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="input-group">
+              <input type="text" class="form-control"  ng-model="newDepartment"  />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="addDepartment()">Добавить</button>
+              </span>
+            </p>
+        </div>
+    </div>
     <div ui-grid="gridOptions" ui-grid-edit class="myGrid"></div>
 </div>

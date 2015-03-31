@@ -15,7 +15,7 @@ namespace testService.Services
         string path = "";
         public DepartmentService() 
         {
-            path = "Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True;User Instance=True";
+            path = ConfigurationManager.ConnectionStrings[1].ToString();
         }
 
         public List<Department> geDepartments()

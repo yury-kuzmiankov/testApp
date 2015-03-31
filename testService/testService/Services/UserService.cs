@@ -16,7 +16,7 @@ namespace testService.Services
 
         public UserService() 
         {
-            path = "Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\database.mdf;Integrated Security=True;User Instance=True";
+            path = ConfigurationManager.ConnectionStrings[1].ToString();
         }
 
         public List<User> getUsers()

@@ -59,7 +59,7 @@ namespace testService.Controllers
         {
             UserService service = new UserService();
             int count = 0;
-            if (user == null)
+            if (user != null)
             {
                 count = service.updateUser(user);
             }

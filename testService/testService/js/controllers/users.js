@@ -20,8 +20,7 @@ angular.module('libraryApp')
           onRegisterApi: function (gridApi) {
               $scope.gridApi = gridApi;
               gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue){
-                  $scope.msg.lastCellEdited = 'edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue ;
-                  $scope.$apply();
+                  $scope.updateObject(colDef, rowEntity, newValue);
               });
           }
       };
@@ -33,18 +32,45 @@ angular.module('libraryApp')
               });
             });
       };
+
+      $scope.updateObject = function(colDef, rowEntity, newValue){
+          var object = colDef.field.split('.');
+          var id = null;
+          if(object.length > 1){
+              var original = colDef.editDropdownOptionsArray;
+              for(var i = 0; i < original.length ; i++){
+                  if(original[i].value == newValue){
+                      id = original[i].id;
+                      break;
+                  }
+              }
+              rowEntity[object[0]].Id = id;
+          }
+          testFactory.updateUser({
+              Id : rowEntity.Id,
+              LastName : rowEntity.LastName,
+              FirstName : rowEntity.FirstName,
+              Role : {
+                  Id :  rowEntity.Role.Id
+              },
+              department : {
+                Id :  rowEntity.department.Id
+              }
+          });
+      };
+
       testFactory.getDepartments().then(function (data) {
-          $scope.departments = data;
+          $scope.prepareDepartments(data);
           $scope.gridOptions = {
               columnDefs: [
-                  { name: 'Логин', field: 'Name' },
+                  { name: 'Логин', field: 'Name', enableCellEdit: true},
                   { name: 'Фамилия', field: 'LastName' },
                   { name: 'Имя', field: 'FirstName' },
                   { name: 'Отдел', field: 'department.Name', editableCellTemplate: 'ui-grid/dropdownEditor', width: '10%',
-                      editDropdownIdLabel: 'value', editDropdownOptionsArray:   $scope.departments
+                      editDropdownIdLabel : 'value', editDropdownOptionsArray:   $scope.departments
                   },
                   { name: 'Роль', field: 'Role.Name', editableCellTemplate: 'ui-grid/dropdownEditor', width: '10%',
-                      editDropdownIdLabel: 'value', editDropdownOptionsArray:  $scope.roles
+                      editDropdownIdLabel : 'value', editDropdownOptionsArray:  $scope.roles
                   }
               ]
           };
