@@ -9,8 +9,6 @@
  */
 angular.module('libraryApp')
   .controller('ResultCtrl', function ($scope, $modal, $rootScope, testFactory, authService, uiGridConstants) {
-      var nextWeek = new Date();
-      nextWeek.setDate(nextWeek.getDate() + 7);
       $scope.gridOptions = {
           enableFiltering: true,
           onRegisterApi: function (gridApi) {
@@ -24,8 +22,8 @@ angular.module('libraryApp')
               { name: 'Правильных', field: 'Correct', width:'10%'},
               { name: 'Попыток', field: 'Try', width:'10%'},
               { name: 'Затрачено времени', field: 'TimeSpend' },
-              { name: 'Результат', field: 'Result' },
-              { name: 'Дата', field: 'Timestamp', cellFilter: 'date:"HH:MM dd-MM-yyyy"'}
+              { name: 'Результат', field: 'Result', cellTooltip: true  },
+              { name: 'Дата', field: 'Timestamp',  type: 'date'}
             ]
       };
       testFactory.getTestsDetail().then(function (data) {
