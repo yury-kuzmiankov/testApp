@@ -224,7 +224,7 @@ angular.module('libraryApp')
                                 if(direction.left){
                                     if (maze[start.x]['left'][start.y - 1] == 0) {
                                         start.y--;
-                                        $scope.circle.style.left = circlePosition.left - this.cellSize;
+                                        $scope.circle.style.left = (circlePosition.left - this.cellSize) + 'px';
                                     }else{
                                         $scope.stopTracking();
                                     }
@@ -232,7 +232,7 @@ angular.module('libraryApp')
                                 if(direction.right){
                                     if (maze[start.x]['left'][start.y] == 0) {
                                         start.y++;
-                                        $scope.circle.style.left = circlePosition.left + this.cellSize;
+                                        $scope.circle.style.left = (circlePosition.left + this.cellSize) + 'px';
                                     }else{
                                         $scope.stopTracking();
                                     }
@@ -240,7 +240,7 @@ angular.module('libraryApp')
                                 if(direction.top){
                                     if (maze[start.x]['top'][start.y] == 0) {
                                         start.x--;
-                                        $scope.circle.style.top = circlePosition.top - this.cellSize;
+                                        $scope.circle.style.top = (circlePosition.top - this.cellSize) + 'px';
                                     }else{
                                         $scope.stopTracking();
                                     }
@@ -248,7 +248,7 @@ angular.module('libraryApp')
                                 if(direction.bottom){
                                     if (maze[start.x + 1]['top'][start.y] == 0) {
                                         start.x++;
-                                        $scope.circle.style.top = circlePosition.top + this.cellSize;
+                                        $scope.circle.style.top = (circlePosition.top + this.cellSize) + 'px';
                                     }else{
                                         $scope.stopTracking();
                                     }

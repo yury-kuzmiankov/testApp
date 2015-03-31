@@ -50,7 +50,7 @@ angular.module('libraryApp')
                         Correct: $scope.phrase == $scope.typed,
                         Neutral: 0,
                         Try: $scope.fail + 1,
-                        Result: "",
+                        Result: $scope.phrase == $scope.typed ? "Правильно" : "Неправильно",
                         Timestamp: new Date(),
                         TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
                         isDone: true

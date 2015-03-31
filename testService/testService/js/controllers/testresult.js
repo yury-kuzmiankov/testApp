@@ -25,7 +25,7 @@ angular.module('libraryApp')
               { name: 'Попыток', field: 'Try', width:'10%'},
               { name: 'Затрачено времени', field: 'TimeSpend' },
               { name: 'Результат', field: 'Result' },
-              { name: 'Дата', field: 'Timestamp', cellFilter: 'date:"yyyy-MM-dd"'}
+              { name: 'Дата', field: 'Timestamp', cellFilter: 'date:"HH:MM dd-MM-yyyy"'}
             ]
       };
       testFactory.getTestsDetail().then(function (data) {

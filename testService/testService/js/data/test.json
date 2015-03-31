@@ -2,20 +2,6 @@
   "currentProgress" : 0,
   "tests" : [
     {
-      "id" : "4",
-      "module" : "4",
-      "questions" : [
-        {
-          "type" : "maze",
-          "additional" : {
-            "type" : "path"
-          },
-          "options" : [],
-          "controlTitle" : "OK"
-        }
-      ]
-    },
-    {
       "id" : "5",
       "module" : "5",
       "questions" : [

@@ -45,12 +45,12 @@
 		    <div class="collapse navbar-collapse" id="navbar-collapse2" >
 			    <ul class="nav navbar-nav navbar-right">
                     <li><a href="#/" >Главная</a></li>
-                    <li ng-show="isAuth"><a href="#/testresult">Результаты</a></li>
-                    <li ng-show="isAuth"><a href="#/users">Пользователи</a></li>
-                    <li ng-show="isAuth"><a href="#/departments">Отделы</a></li>
-				    <li ng-show="!isAuth"><a href="javascript:void(0);" role="button" data-toggle="modal" ng-click="login()">Войти</a></li>
-                    <li ng-show="!isAuth"><a href="javascript:void(0);" ng-click="openregister()">Регистрация</a></li>
-                    <li ng-show="isAuth"><a href="javascript:void(0);" ng-click="logout()">Выйти</a></li>
+                    <li ng-if="isAuth"><a href="#/testresult">Результаты</a></li>
+                    <li ng-if="isAuth"><a href="#/users">Пользователи</a></li>
+                    <li ng-if="isAuth"><a href="#/departments">Отделы</a></li>
+				    <li ng-if="!isAuth"><a href="javascript:void(0);" role="button" data-toggle="modal" ng-click="login()">Войти</a></li>
+                    <li ng-if="!isAuth"><a href="javascript:void(0);" ng-click="openregister()">Регистрация</a></li>
+                    <li ng-if="isAuth"><a href="javascript:void(0);" ng-click="logout()">Выйти</a></li>
 			    </ul>
 		    </div>
 	    </div>
