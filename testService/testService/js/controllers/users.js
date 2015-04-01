@@ -26,7 +26,7 @@ angular.module('libraryApp')
         };
         var init = function() {
             var user = authService.getUserData();
-            if (user.Role.Id == 1) {
+            if (user && user.Role.Id == 1) {
                 testFactory.getDepartments().then(function (data) {
                     $scope.prepareDepartments(data);
                     $scope.gridOptions = {

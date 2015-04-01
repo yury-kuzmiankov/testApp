@@ -11,7 +11,7 @@ angular.module('libraryApp')
   .controller('ResultCtrl', function ($scope, $rootScope, testFactory, authService) {
       var init = function(){
           var user = authService.getUserData();
-          if(user.Role.Id != 2){
+          if(user && user.Role.Id != 2){
               $scope.gridOptions = {
                   enableFiltering: true,
                   onRegisterApi: function (gridApi) {

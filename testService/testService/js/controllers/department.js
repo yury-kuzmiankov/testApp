@@ -43,7 +43,7 @@ angular.module('libraryApp')
         };
         var init = function() {
             var user = authService.getUserData();
-            if (user.Role.Id != 2) {
+            if (user && user.Role.Id != 2) {
                 testFactory.getDepartments().then(function (data) {
                     $scope.gridOptions.data = data;
                 });
