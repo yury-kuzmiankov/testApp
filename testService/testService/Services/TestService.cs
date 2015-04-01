@@ -16,7 +16,7 @@ namespace testService.Services
 
         public TestService()
         {
-            path = ConfigurationManager.ConnectionStrings[1].ToString();
+            path = ConfigurationManager.ConnectionStrings["serverDb"].ToString();
         }
 
         public List<Test> getTestsByUser(int id)

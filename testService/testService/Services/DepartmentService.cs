@@ -15,7 +15,7 @@ namespace testService.Services
         string path = "";
         public DepartmentService() 
         {
-            path = ConfigurationManager.ConnectionStrings[1].ToString();
+            path = ConfigurationManager.ConnectionStrings["serverDb"].ToString();
         }
 
         public List<Department> geDepartments()
@@ -39,7 +39,9 @@ namespace testService.Services
                     }
                 }
             }
-            catch (Exception e) { throw e; }
+            catch (Exception e) {
+                throw new Exception(path, e); 
+            }
             finally
             {
                 conn.Close();

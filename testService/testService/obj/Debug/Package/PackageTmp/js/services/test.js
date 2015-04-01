@@ -83,6 +83,48 @@ angular.module('libraryApp')
                   deferred.resolve(result.data);
               });
               return deferred.promise;
+          },
+
+          updateUser: function (data) {
+              return $http({
+                  method: 'POST',
+                  url: '/user/update',
+                  data: data
+              }).then(function (response) {
+                  var data = response.data;
+                  if (data) {
+                  } else {
+                      return $q.reject(data);
+                  }
+              });
+          },
+
+          updateDepartment: function (data) {
+              return $http({
+                  method: 'POST',
+                  url: '/department/update',
+                  data: data
+              }).then(function (response) {
+                  var data = response.data;
+                  if (data) {
+                  } else {
+                      return $q.reject(data);
+                  }
+              });
+          },
+
+          insertDepartment: function (data) {
+              return $http({
+                  method: 'POST',
+                  url: '/department/insert',
+                  data: data
+              }).then(function (response) {
+                  var data = response.data;
+                  if (data) {
+                  } else {
+                      return $q.reject(data);
+                  }
+              });
           }
       }
   });
