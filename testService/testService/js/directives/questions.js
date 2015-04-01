@@ -150,6 +150,7 @@ angular.module('libraryApp')
                         if(!isCorrect && (this.answer == "" || this.answer == null)){
                             this.isShowPrev = true;
                         }
+                        this.answer = "";
                         this.progress++;
                     }else{
                         $scope.handleResults();

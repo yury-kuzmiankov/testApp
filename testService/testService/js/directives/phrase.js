@@ -47,7 +47,7 @@ angular.module('libraryApp')
                 $scope.handleResults = function() {
                     $scope.$emit("testDone", {
                         Fail: $scope.fail,
-                        Correct: $scope.phrase == $scope.typed,
+                        Correct: $scope.phrase == $scope.typed ? 1 : 0,
                         Neutral: 0,
                         Try: $scope.fail + 1,
                         Result: $scope.phrase == $scope.typed ? "Правильно" : "Неправильно",

@@ -6,7 +6,7 @@ angular.module('libraryApp').factory('authService', [
     '$rootScope',
     'helper',
     'appConfig',
-    function ($http, $q, $cookieStore, $rootScope, helper, appConfig) {
+    function ($http, $q, $cookieStore, $rootScope, helper, appConfig, $location) {
         var USER_KEY = 'user', _user = helper.storage.get(USER_KEY);
         function clearSession() {
             $cookieStore.remove(appConfig.userCookie);
@@ -84,6 +84,10 @@ angular.module('libraryApp').factory('authService', [
                         }
                     }
                 }
+            },
+
+            rootRedirect: function () {
+                $location.path('/');
             }
         };
     }

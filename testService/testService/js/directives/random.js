@@ -38,11 +38,23 @@ angular.module('libraryApp')
                     this.array = [];
                 };
 
+                $scope.getResult = function() {
+                    var isEqual = true;
+                    var answer = $scope.answer;
+                    for (var i = 0; i < answer.length; i++){
+                        if(answer.charAt(i) != $scope.arrayResult[i]){
+                            isEqual = false;
+                            break;
+                        }
+                    }
+                    return isEqual;
+                };
+
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
                     var fail = 0;
                     var correct = 0;
-                    if($scope.answer == $scope.arrayResult){
+                    if($scope.getResult()){
                         correct++;
                     }else{
                         fail++;

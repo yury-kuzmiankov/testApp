@@ -17,7 +17,9 @@ angular.module('libraryApp')
             },
             templateUrl: 'templates/compare.html',
             controller: function($scope) {
-                $scope.original = [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true];
+                $scope.original = [true, false, true, false, false,
+                    true, false, true, true, false,
+                    false, true, false, true, true, false];
                 $scope.results = [];
                 $scope.imageurl = null;
                 $scope.startTime = new Date().getTime();

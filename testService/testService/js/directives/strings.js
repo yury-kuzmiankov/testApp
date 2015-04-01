@@ -58,7 +58,7 @@ angular.module('libraryApp')
                 $scope.handleResults = function() {
                     $scope.$emit("testDone", {
                         Fail: 0,
-                        Correct: $scope.answer,
+                        Correct: $scope.answer == 5 ? 1 : 0 ,
                         Neutral: 0,
                         Try: 1,
                         Result: $scope.getResult(parseInt($scope.answer, 10)),

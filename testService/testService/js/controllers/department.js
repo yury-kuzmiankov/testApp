@@ -8,7 +8,7 @@
  * Controller of the yomanAppApp
  */
 angular.module('libraryApp')
-    .controller('DepartmentCtrl', function ($scope, $modal, $rootScope, testFactory, authService, uiGridConstants) {
+    .controller('DepartmentCtrl', function ($scope, $modal, $rootScope, testFactory, authService) {
         $scope.departments = [],
         $scope.newDepartment = "";
 
@@ -41,8 +41,14 @@ angular.module('libraryApp')
                 Name : newValue
             });
         };
-
-        testFactory.getDepartments().then(function (data) {
-            $scope.gridOptions.data = data;
-        });
+        var init = function() {
+            var user = authService.getUserData();
+            if (user.Role.Id != 2) {
+                testFactory.getDepartments().then(function (data) {
+                    $scope.gridOptions.data = data;
+                });
+            }else{
+                authService.rootRedirect();
+            }
+        }();
     });
