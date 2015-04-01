@@ -1,3 +1,7 @@
+.inputwrap{
+    display: inline-block;
+    width: 200px;
+}
 /* colors directive */
 colors ul li{
 	display: inline-block;
@@ -154,8 +158,8 @@ maze table{
 }
 
 maze table td{
-	width: 30px;
-	height: 30px;
+	width: 15px;
+	height: 15px;
 }
 
 maze .circle{
@@ -163,8 +167,8 @@ maze .circle{
 	top : 0;
 	left : 0;
 	display: inline-block;
-	width: 15px;
-	height: 15px;
+	width: 10px;
+	height: 10px;
 	background-color: red;
 	transition: all 0.08s;
 	cursor: pointer;

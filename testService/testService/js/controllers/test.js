@@ -12,6 +12,7 @@ angular.module('libraryApp')
       $scope.user = authService.getUserData();
       if($scope.user){
             $scope.$on('testDone', function (event, result) {
+                console.log(result);
                 var progress = $scope.progress;
                 var questionId = $scope.questionId;
                 $scope.currentTest.tests[progress].result = result;

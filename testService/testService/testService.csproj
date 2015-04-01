@@ -112,6 +112,9 @@
     <Content Include="App_Data\database_log.ldf">
       <DependentUpon>database.mdf</DependentUpon>
     </Content>
+    <Content Include="components\angular-animate\angular-animate.js" />
+    <Content Include="components\angular-animate\angular-animate.min.js" />
+    <Content Include="components\angular-animate\index.js" />
     <Content Include="components\angular-bootstrap\ui-bootstrap-tpls.js" />
     <Content Include="components\angular-bootstrap\ui-bootstrap-tpls.min.js" />
     <Content Include="components\angular-bootstrap\ui-bootstrap.js" />
@@ -127,6 +130,9 @@
     <Content Include="components\angular-route\angular-route.js" />
     <Content Include="components\angular-route\angular-route.min.js" />
     <Content Include="components\angular-route\index.js" />
+    <Content Include="components\angular-touch\angular-touch.js" />
+    <Content Include="components\angular-touch\angular-touch.min.js" />
+    <Content Include="components\angular-touch\index.js" />
     <Content Include="components\angular-ui-grid\ui-grid.css" />
     <Content Include="components\angular-ui-grid\ui-grid.js" />
     <Content Include="components\angular-ui-grid\ui-grid.min.css" />
@@ -314,6 +320,11 @@
   <ItemGroup>
     <None Include="base\testBase" />
     <Content Include="Views\Shared\Site.Master" />
+    <None Include="components\angular-animate\.bower.json" />
+    <None Include="components\angular-animate\angular-animate.min.js.map" />
+    <None Include="components\angular-animate\bower.json" />
+    <None Include="components\angular-animate\package.json" />
+    <None Include="components\angular-animate\README.md" />
     <None Include="components\angular-bootstrap\.bower.json" />
     <None Include="components\angular-bootstrap\bower.json" />
     <None Include="components\angular-cookies\.bower.json" />
@@ -334,6 +345,11 @@
     <None Include="components\angular-route\bower.json" />
     <None Include="components\angular-route\package.json" />
     <None Include="components\angular-route\README.md" />
+    <None Include="components\angular-touch\.bower.json" />
+    <None Include="components\angular-touch\angular-touch.min.js.map" />
+    <None Include="components\angular-touch\bower.json" />
+    <None Include="components\angular-touch\package.json" />
+    <None Include="components\angular-touch\README.md" />
     <None Include="components\angular-ui-grid\.bower.json" />
     <None Include="components\angular-ui-grid\bower.json" />
     <None Include="components\angular-ui-grid\README.md" />

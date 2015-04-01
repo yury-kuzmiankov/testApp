@@ -69,7 +69,7 @@ angular.module('libraryApp')
                 };
 
                 $scope.checkAnswer = function() {
-                    return this.answer == this.waitValue ? true : false;
+                    return this.answer.toUpperCase() == this.waitValue;;
                 };
 
                 $scope.getCharByPos = function(number, value) {
@@ -93,6 +93,7 @@ angular.module('libraryApp')
 
                 $scope.prepareTest = function() {
                     this.text = "";
+                    this.answer = "";
                     switch (this.progress) {
                         case 0 :
                             var numberFirst = randomService.getRandomInt(0, 3);
@@ -109,7 +110,7 @@ angular.module('libraryApp')
                             break;
                         case 1 :
                             var user = authService.getUserData();
-                            var name = "ЮРА";
+                            var name = user.FirstName;
                             var date = new Date();
                             var today = date.getDay();
                             var dayRandom = randomService.getRandomInt(0, this.days.length - 1);
@@ -147,10 +148,9 @@ angular.module('libraryApp')
                         $scope.results.push(isCorrect);
                         this.isShowPrev = false;
                         this.isShowPrepare = true;
-                        if(!isCorrect && (this.answer == "" || this.answer == null)){
+                        if(!isCorrect){
                             this.isShowPrev = true;
                         }
-                        this.answer = "";
                         this.progress++;
                     }else{
                         $scope.handleResults();

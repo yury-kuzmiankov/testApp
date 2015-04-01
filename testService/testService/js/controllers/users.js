@@ -31,7 +31,7 @@ angular.module('libraryApp')
                     $scope.prepareDepartments(data);
                     $scope.gridOptions = {
                         columnDefs: [
-                            { name: 'Логин', field: 'Name', enableCellEdit: true},
+                            { name: 'Логин', field: 'Name', enableCellEdit: false},
                             { name: 'Фамилия', field: 'LastName' },
                             { name: 'Имя', field: 'FirstName' },
                             { name: 'Отдел', field: 'department.Name', editableCellTemplate: 'ui-grid/dropdownEditor', width: '10%',

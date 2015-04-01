@@ -2,8 +2,11 @@
   <div class="panel-heading" ng-bind="isShowAnswer ? 'Сделайте выбор' : 'Запомните числа'"></div>
   <div class="panel-body">
     <span class="text-error" ng-repeat="digit in array track by $index" ng-bind="digit"></span>
-    <input type="text"  ng-model="answer" ng-show="isShowAnswer" placeholder="Введите числа…"/>
+    <div class="inputwrap">
+        <input type="text" class="form-control"  ng-model="answer" ng-show="isShowAnswer" placeholder="Введите числа…"/>
+    </div>
     <div class="doneInstruction" ng-show="isShowAnswer">Если вы не можете больше вспомнить чисел нажмите [OK]</div>
+    <hr>
     <a class="btn btn-lg btn-success" ng-show="isShowAnswer" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
   </div>
 </div>

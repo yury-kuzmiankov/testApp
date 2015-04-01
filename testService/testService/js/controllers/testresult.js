@@ -18,15 +18,15 @@ angular.module('libraryApp')
                       $scope.gridApi = gridApi;
                   },
                   columnDefs: [
-                      { name: 'Фамилия', field: 'user.LastName' },
-                      { name: 'Отдел', field: 'user.department.Name', width:'10%'},
-                      { name: 'Тест', field: 'TestId', width:'10%'},
-                      { name: 'Ошибок', field: 'Fail', width:'10%'},
-                      { name: 'Правильных', field: 'Correct', width:'10%'},
-                      { name: 'Попыток', field: 'Try', width:'10%'},
-                      { name: 'Затрачено времени', field: 'TimeSpend' },
-                      { name: 'Результат', field: 'Result', cellTooltip: true  },
-                      { name: 'Дата', field: 'Timestamp',  type: 'date', cellFilter: 'date:"HH:MM dd-MM-yyyy"'}
+                      { name: 'Фамилия', field: 'user.LastName',width:'10%', enableCellEdit: false },
+                      { name: 'Отдел', field: 'user.department.Name', width:'8%', enableCellEdit: false},
+                      { name: 'Тест', field: 'TestId', width:'7%', enableCellEdit: false},
+                      { name: 'Ошибок', field: 'Fail', width:'7%', enableCellEdit: false},
+                      { name: 'Правильных', field: 'Correct', width:'10%', enableCellEdit: false},
+                      { name: 'Попыток', field: 'Try', width:'7%', enableCellEdit: false},
+                      { name: 'Затрачено времени', field: 'TimeSpend', width:'13%', enableCellEdit: false },
+                      { name: 'Результат', field: 'Result',width:'20%', cellTooltip: true, enableCellEdit: true  },
+                      { name: 'Дата', field: 'Timestamp',  type: 'date', width:'10%', cellFilter: 'date:"HH:MM dd-MM-yyyy"', enableCellEdit: false}
                   ]
               };
               testFactory.getTestsDetail().then(function (data) {

@@ -19,6 +19,8 @@
     <script type="text/javascript" src="components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="components/angular-resource/angular-resource.min.js"></script>
     <script type="text/javascript" src="components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    <script src="components/angular-touch/angular-touch.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="components/d3/d3.js"></script>
     <script type="text/javascript" src="components/nvd3/nv.d3.js"></script>
     <script type="text/javascript" src="components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>

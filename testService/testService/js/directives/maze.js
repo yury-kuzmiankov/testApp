@@ -20,7 +20,7 @@ angular.module('libraryApp')
                 $scope.startTime = new Date().getTime();
                 $scope.fails = 0;
                 $scope.traking = false;
-                $scope.cellSize = 30;
+                $scope.cellSize = 15;
                 $scope.limit = 60000;
                 $scope.sides = {
                     top : "border-top",

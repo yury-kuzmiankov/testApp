@@ -40,9 +40,7 @@ angular.module('libraryApp')
                     this.results.push(this.answer == this.sumArray());
                     this.progress++;
                     switch (this.progress) {
-                        case 1:
-                        case 2:
-                        case 3:{
+                        case 1:{
                             this.array[0] = randomService.getRandomInt(1, 99);
                             this.array[1] = randomService.getRandomInt(1, 99);
                             this.array[2] = randomService.getRandomInt(1, 99);

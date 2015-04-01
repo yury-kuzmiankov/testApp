@@ -44,13 +44,25 @@ angular.module('libraryApp')
                     input.focus();
                 };
                 $scope.focusElement();
+                $scope.getResult = function() {
+                    var isEqual = true;
+                    var answer = $scope.typed;
+                    for (var i = 0; i < answer.length; i++){
+                        if(answer.charAt(i) != $scope.phrase[i].char){
+                            isEqual = false;
+                            break;
+                        }
+                    }
+                    return isEqual;
+                };
                 $scope.handleResults = function() {
+                    var isCorrect = $scope.getResult();
                     $scope.$emit("testDone", {
                         Fail: $scope.fail,
-                        Correct: $scope.phrase == $scope.typed ? 1 : 0,
+                        Correct: isCorrect ? 1 : 0,
                         Neutral: 0,
                         Try: $scope.fail + 1,
-                        Result: $scope.phrase == $scope.typed ? "Правильно" : "Неправильно",
+                        Result: isCorrect ? "Правильно" : "Неправильно",
                         Timestamp: new Date(),
                         TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
                         isDone: true

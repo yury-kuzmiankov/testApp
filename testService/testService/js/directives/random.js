@@ -39,32 +39,35 @@ angular.module('libraryApp')
                 };
 
                 $scope.getResult = function() {
-                    var isEqual = true;
-                    var answer = $scope.answer;
-                    for (var i = 0; i < answer.length; i++){
-                        if(answer.charAt(i) != $scope.arrayResult[i]){
-                            isEqual = false;
-                            break;
-                        }
+                    var fullResult = {
+                        result : "",
+                        fail : 0,
+                        correct : 0
+                    };
+                    var answer = $scope.answer.split(" ");
+                    if(answer.length < $scope.arrayResult.length){
+                        fullResult.fail = $scope.arrayResult.length - answer.length;
                     }
-                    return isEqual;
+                    angular.forEach(answer, function(result, index){
+                        if(result != $scope.arrayResult[index]){
+                            fullResult.fail++;
+                        }else{
+                            fullResult.correct++;
+                        }
+                    });
+                    fullResult.result = Math.floor(fullResult.correct / (fullResult.fail + fullResult.correct) * 100) + "% правильных";
+                    return fullResult;
                 };
 
                 $scope.handleResults = function() {
                     $interval.cancel(this.timer);
-                    var fail = 0;
-                    var correct = 0;
-                    if($scope.getResult()){
-                        correct++;
-                    }else{
-                        fail++;
-                    }
+                    var result = $scope.getResult();
                     $scope.$emit("testDone", {
-                        Fail: fail,
-                        Correct: correct,
+                        Fail: result.fail,
+                        Correct: result.correct,
                         Neutral: 0,
-                        Try: 1,
-                        Result: correct ? "Правильно" : "Неправильно",
+                        Try: result.correct + result.fail,
+                        Result: result.result,
                         Timestamp: new Date(),
                         TimeSpend: Math.floor((new Date().getTime() - $scope.startTime) / 1000),
                         isDone: true

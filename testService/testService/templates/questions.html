@@ -4,7 +4,9 @@
         <span ng-show="!isShowPrepare" ng-bind="text"></span>
         <span ng-show="isShowPrepare && isShowPrev" ng-bind="question.additional.prevText"></span>
         <span ng-show="isShowPrepare" ng-bind="question.additional.nextText"></span>
-        <input type="text" ng-model="answer" ng-show="!isShowPrepare || isShowPrev" placeholder="Введите ответ…"/>
+        <div class="inputwrap">
+            <input type="text" class="form-control" ng-model="answer" ng-show="!isShowPrepare || isShowPrev" placeholder="Введите ответ…"/>
+        </div>
         <hr>
         <a class="btn btn-lg btn-success" ng-show="!isShowPrepare" ng-bind="question.controlTitle" ng-click="stop()"></a>
         <a class="btn btn-lg btn-success" ng-show="isShowPrepare" ng-bind="question.controlTitle" ng-click="next()"></a>
