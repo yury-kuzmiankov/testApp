@@ -20,7 +20,8 @@ angular.module('libraryApp')
                 $scope.startTime = new Date().getTime();
                 $scope.fails = 0;
                 $scope.traking = false;
-                $scope.cellSize = 15;
+                $scope.cellSize = 21;
+                $scope.circleSize = 7;
                 $scope.limit = 60000;
                 $scope.sides = {
                     top : "border-top",
@@ -59,13 +60,16 @@ angular.module('libraryApp')
                     this.maze[12].top = new Array(0,0,0,0,0,1,1,1,1,0,1,0);
                     this.maze[12].left = new Array(1,1,0,1,0,0,0,1,0,0,1,1);
                     $scope.startPos = {
-                        x : 6,
-                        y : 5
+                        x : 0,
+                        y : 350
                     };
                     $scope.success = {
                         x : 0,
                         y : 0
                     };
+                    $scope.circle = $element[0].querySelector('.circle');
+                    $scope.circle.style.top = $scope.startPos.y + 'px';
+                    $scope.circle.style.left = window.outerWidth/2 +  $scope.startPos.x + 'px';
                     $scope.progress = angular.copy($scope.startPos);
                 };
 
@@ -91,13 +95,16 @@ angular.module('libraryApp')
                     this.maze[6].left = new Array(1,1);
 
                     $scope.startPos = {
-                        x : 0,
-                        y : 0
+                        x : 500,
+                        y : 300
                     };
                     $scope.success = {
                         x : 0,
                         y : 0
                     };
+                    $scope.circle = $element[0].querySelector('.circle');
+                    $scope.circle.style.top =  $scope.startPos.y + 'px';
+                    $scope.circle.style.left =  $scope.startPos.x + 'px';
                     $scope.progress = angular.copy($scope.startPos);
                 };
 
@@ -130,12 +137,14 @@ angular.module('libraryApp')
                 };
                 $scope.initTimer();
 
-                $scope.startTracking = function(){
+                $scope.startTracking = function(e){
                     if(!$scope.traking){
                         $scope.traking = true;
                         $scope.circle = $element[0].querySelector('.circle');
                         $scope.fails++;
                         var table = $element[0].querySelector('table');
+                        $scope.circle.style.top = e.y - $scope.circleSize/2 + 'px';
+                        $scope.circle.style.left = e.x - $scope.circleSize/2 + 'px';
                         //$scope.addClass(table, 'active');
 
                     }
@@ -157,8 +166,8 @@ angular.module('libraryApp')
 
                 $scope.stopTracking = function(){
                     $scope.traking = false;
-                    $scope.circle.style.top = 0;
-                    $scope.circle.style.left = 0;
+                    $scope.circle.style.top =  $scope.startPos.y + 'px';
+                    $scope.circle.style.left =  $scope.startPos.x + 'px';
                     $scope.progress = angular.copy($scope.startPos);
                     var table = $element[0].querySelector('table');
                     $scope.removeClass(table, 'active');
@@ -199,6 +208,38 @@ angular.module('libraryApp')
                     return direction;
                 };
 
+                $scope.getDirectionCell = function(e){
+                    var offset = {
+                      x : e.offsetX,
+                      y : e.offsetY
+                    };
+                    var sizes = {
+                        cell : $scope.cellSize,
+                        circle : $scope.circleSize
+                    };
+                    var direction = {
+                        top : false,
+                        bottom : false,
+                        left : false,
+                        right : false
+                    };
+
+                    if(offset.y < sizes.circle/2){
+                        direction.top = true;
+                    }
+                    if(offset.y > (sizes.cell - sizes.circle/2)){
+                        direction.bottom = true;
+                    }
+                    if(offset.x <= 0){
+                        direction.left = true;
+                    }
+                    if(offset.x > (sizes.cell - sizes.circle/2)){
+                        direction.right = true;
+                    }
+                    console.log(offset);
+                    return direction;
+                };
+
                 $scope.getCirclePosition = function(){
                     var circlePosition = {
                         left : $scope.circle.style.left.replace("px", ""),
@@ -207,6 +248,41 @@ angular.module('libraryApp')
                     circlePosition.left = circlePosition.left != "" ? parseInt(circlePosition.left, 10) : 0;
                     circlePosition.top = circlePosition.top != "" ? parseInt(circlePosition.top, 10) : 0;
                     return circlePosition;
+                };
+                $scope.moveTracking1 = function(e) {
+                    if ($scope.traking) {
+
+                        var direction = $scope.getDirectionCell(e);
+                        console.log(direction);
+                        var maze = $scope.maze;
+                        var $target = angular.element(e.target);
+                        var target = {
+                            x : $target.data().$scope.$parent.$index,
+                            y : $target.data().$scope.$index
+                        };
+                        $scope.circle.style.top = e.y - $scope.circleSize/2 + 'px';
+                        $scope.circle.style.left = e.x - $scope.circleSize/2 + 'px';
+                        if(direction.left){
+                            if (maze[target.x]['left'][target.y - 1] != 0) {
+                                $scope.stopTracking();
+                            }
+                        }
+                        if(direction.right){
+                            if (maze[target.x]['left'][target.y] != 0) {
+                                $scope.stopTracking();
+                            }
+                        }
+                        if(direction.top){
+                            if (maze[target.x]['top'][target.y] != 0) {
+                                $scope.stopTracking();
+                            }
+                        }
+                        if(direction.bottom){
+                            if (maze[target.x + 1]['top'][target.y] != 0) {
+                                $scope.stopTracking();
+                            }
+                        }
+                    }
                 };
 
                 $scope.moveTracking = function(e){
@@ -257,6 +333,7 @@ angular.module('libraryApp')
                                     $scope.result = true;
                                     $scope.handleResults();
                                 }
+
                             }else{
                                 $scope.stopTracking();
                             }
