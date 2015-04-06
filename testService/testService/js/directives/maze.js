@@ -60,7 +60,7 @@ angular.module('libraryApp')
                     this.maze[12].top = new Array(0,0,0,0,0,1,1,1,1,0,1,0);
                     this.maze[12].left = new Array(1,1,0,1,0,0,0,1,0,0,1,1);
                     $scope.startPos = {
-                        x : 0,
+                        x : -14,
                         y : 350
                     };
                     $scope.success = {
@@ -69,7 +69,73 @@ angular.module('libraryApp')
                     };
                     $scope.circle = $element[0].querySelector('.circle');
                     $scope.circle.style.top = $scope.startPos.y + 'px';
-                    $scope.circle.style.left = window.outerWidth/2 +  $scope.startPos.x + 'px';
+                    $scope.circle.style.left = window.innerWidth/2 +  $scope.startPos.x + 'px';
+                    $scope.progress = angular.copy($scope.startPos);
+                };
+
+                $scope.initBigMaze = function(){
+                    this.maze = [];
+
+                    for (var rows=0; rows<23; rows++){
+                        this.maze[rows] = [];
+                    }
+                    this.maze[0].top = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[0].left = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1);
+                    this.maze[1].top = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0);
+                    this.maze[1].left = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1);
+                    this.maze[2].top = new Array(0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1);
+                    this.maze[2].left = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1);
+                    this.maze[3].top = new Array(0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[3].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[4].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[4].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[5].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[5].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[6].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[6].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[7].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[7].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[8].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[8].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[9].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[9].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[10].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[10].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[11].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[11].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[12].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[12].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[13].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[13].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[14].top = new Array(0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[14].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[15].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[15].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[16].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[16].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[17].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[17].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[18].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[18].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[19].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[19].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[20].top = new Array(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[20].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[21].top = new Array(0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[21].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[22].top = new Array(0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    this.maze[22].left = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+                    $scope.startPos = {
+                        x : -12,
+                        y : 350
+                    };
+                    $scope.success = {
+                        x : 0,
+                        y : 0
+                    };
+                    $scope.circle = $element[0].querySelector('.circle');
+                    $scope.circle.style.top = $scope.startPos.y + 'px';
+                    $scope.circle.style.left = window.innerWidth/2 +  $scope.startPos.x + 'px';
                     $scope.progress = angular.copy($scope.startPos);
                 };
 
@@ -110,18 +176,21 @@ angular.module('libraryApp')
 
                 $scope.init = function(){
                     if($scope.question.additional.type == "maze"){
-                        $scope.initMaze();
+                        $scope.circle = $element[0].querySelector('.circle');
                         var rand = randomService.getRandomInt(0, 2);
                         $scope.size = $scope.question.additional.size[rand];
                         switch ($scope.size) {
                             case "big":
-                                $scope.limit = 60000;
+                                $scope.limit = 180000;
+                                $scope.initMaze();
                                 break;
                             case "middle":
                                 $scope.limit = 120000;
+                                $scope.initMaze();
                                 break;
                             default :
-                                $scope.limit = 180000;
+                                $scope.limit = 60000;
+                                $scope.initMaze();
                         }
                     }else{
                         $scope.initPath();
@@ -140,7 +209,6 @@ angular.module('libraryApp')
                 $scope.startTracking = function(e){
                     if(!$scope.traking){
                         $scope.traking = true;
-                        $scope.circle = $element[0].querySelector('.circle');
                         $scope.fails++;
                         var table = $element[0].querySelector('table');
                         $scope.circle.style.top = e.y - $scope.circleSize/2 + 'px';
@@ -166,8 +234,8 @@ angular.module('libraryApp')
 
                 $scope.stopTracking = function(){
                     $scope.traking = false;
-                    $scope.circle.style.top =  $scope.startPos.y + 'px';
-                    $scope.circle.style.left =  $scope.startPos.x + 'px';
+                    $scope.circle.style.top = $scope.startPos.y + 'px';
+                    $scope.circle.style.left = window.innerWidth/2 +  $scope.startPos.x + 'px';
                     $scope.progress = angular.copy($scope.startPos);
                     var table = $element[0].querySelector('table');
                     $scope.removeClass(table, 'active');
@@ -236,7 +304,6 @@ angular.module('libraryApp')
                     if(offset.x > (sizes.cell - sizes.circle/2)){
                         direction.right = true;
                     }
-                    console.log(offset);
                     return direction;
                 };
 
@@ -253,7 +320,6 @@ angular.module('libraryApp')
                     if ($scope.traking) {
 
                         var direction = $scope.getDirectionCell(e);
-                        console.log(direction);
                         var maze = $scope.maze;
                         var $target = angular.element(e.target);
                         var target = {
@@ -281,6 +347,10 @@ angular.module('libraryApp')
                             if (maze[target.x + 1]['top'][target.y] != 0) {
                                 $scope.stopTracking();
                             }
+                        }
+                        if(target.x == $scope.success.x && target.y == $scope.success.y){
+                            $scope.result = true;
+                            $scope.handleResults();
                         }
                     }
                 };
