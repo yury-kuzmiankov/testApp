@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-heading" ng-bind="question.description"></div>
     <div class="panel-body">
-        <div class="tableContainer">
-            <table ng-mousemove="moveTracking1($event)" ng-class="question.additional.type">
+        <div class="tableContainer" ng-class="question.additional.type">
+            <table ng-mousemove="moveTracking1($event)">
                 <tr ng-repeat="row in maze">
                     <td ng-repeat="cell in row.top track by $index" ng-style="applyStyle()" data-cell="{{$index}}" data-row="{{$parent.$index}}">
 
@@ -10,6 +10,12 @@
                 </tr>
             </table>
             <div  class="circle" ng-mousedown="startTracking($event)" ></div>
+            <ul class="squares" ng-if="question.additional.type != 'maze'" ng-mouseenter="stopTracking($event)">
+                <li class="square"></li>
+                <li class="square"></li>
+                <li class="square"></li>
+                <li class="square"></li>
+            </ul>
         </div>
     </div>
 </div>

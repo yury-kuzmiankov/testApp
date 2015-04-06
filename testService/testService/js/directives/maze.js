@@ -22,10 +22,14 @@ angular.module('libraryApp')
                 $scope.traking = false;
                 $scope.cellSize = 21;
                 $scope.circleSize = 7;
-                $scope.limit = 60000;
+                $scope.limit = 1160000;
                 $scope.sides = {
                     top : "border-top",
                     left : "border-right"
+                };
+                $scope.exit = {
+                    x : 0,
+                    y : 0
                 };
                 $scope.initMaze = function(){
                     this.maze = [];
@@ -140,9 +144,14 @@ angular.module('libraryApp')
                 };
 
                 $scope.initPath = function(){
+                    $scope.exit = {
+                        x : 10,
+                        y : 10
+                    };
                     this.maze = [];
-                    this.cellSize = 50;
-                    for (var rows=0; rows<7; rows++){
+                    this.cellSize = 60;
+                    $scope.circleSize = 18;
+                    for (var rows=0; rows<6; rows++){
                         this.maze[rows] = [];
                     }
                     this.maze[0].top = new Array(1,1);
@@ -156,21 +165,19 @@ angular.module('libraryApp')
                     this.maze[4].top = new Array(0,1);
                     this.maze[4].left = new Array(0,1);
                     this.maze[5].top = new Array(1,0);
-                    this.maze[5].left = new Array(0,1);
-                    this.maze[6].top = new Array(1,0);
-                    this.maze[6].left = new Array(1,1);
+                    this.maze[5].left = new Array(1,1);
 
                     $scope.startPos = {
-                        x : 500,
-                        y : 300
+                        x : -8,
+                        y : 260
                     };
                     $scope.success = {
-                        x : 0,
-                        y : 0
+                        x : 5,
+                        y : 1
                     };
                     $scope.circle = $element[0].querySelector('.circle');
-                    $scope.circle.style.top =  $scope.startPos.y + 'px';
-                    $scope.circle.style.left =  $scope.startPos.x + 'px';
+                    $scope.circle.style.top = $scope.startPos.y + 'px';
+                    $scope.circle.style.left = window.innerWidth/2 +  $scope.startPos.x + 'px';
                     $scope.progress = angular.copy($scope.startPos);
                 };
 
@@ -328,6 +335,10 @@ angular.module('libraryApp')
                         };
                         $scope.circle.style.top = e.y - $scope.circleSize/2 + 'px';
                         $scope.circle.style.left = e.x - $scope.circleSize/2 + 'px';
+                        if(target.x == $scope.success.x && target.y == $scope.success.y){
+                            $scope.result = true;
+                            $scope.handleResults();
+                        }
                         if(direction.left){
                             if (maze[target.x]['left'][target.y - 1] != 0) {
                                 $scope.stopTracking();
@@ -347,10 +358,6 @@ angular.module('libraryApp')
                             if (maze[target.x + 1]['top'][target.y] != 0) {
                                 $scope.stopTracking();
                             }
-                        }
-                        if(target.x == $scope.success.x && target.y == $scope.success.y){
-                            $scope.result = true;
-                            $scope.handleResults();
                         }
                     }
                 };
@@ -415,6 +422,7 @@ angular.module('libraryApp')
                     var rowIndex = this.$parent.$index;
                     var cellIndex = this.$index;
                     var maze = $scope.maze;
+                    var exit = $scope.exit;
                     var style = {};
                     for (var i = 0; i < 2; i++) {
                         var key = i == 0 ? 'top' : 'left';
@@ -422,11 +430,15 @@ angular.module('libraryApp')
                             style[$scope.sides[key]] = "2px black solid";
                         }
                     }
-                    if ((0 == cellIndex) && (0 != rowIndex)){
-                        style['border-left'] = "2px black solid";
-                    }
-                    if (rowIndex == maze.length - 1){
-                        style['border-bottom'] = "2px black solid";
+                    if (exit.x == rowIndex && exit.y == cellIndex){
+
+                    }else{
+                        if (0 == cellIndex){
+                            style['border-left'] = "2px black solid";
+                        }
+                        if (rowIndex == maze.length - 1){
+                            style['border-bottom'] = "2px black solid";
+                        }
                     }
                     return style;
                 };
