@@ -163,7 +163,7 @@ maze table td{
 }
 
 maze .circle{
-	position: fixed;
+	position: relative;
 	top : 0;
 	left : 0;
 	display: inline-block;
@@ -216,7 +216,7 @@ maze .path .circle{
 }
 
 maze table.active .circle{
-	position: fixed;
+	position: relative;
 }
 
 words textarea{

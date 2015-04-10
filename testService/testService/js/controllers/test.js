@@ -16,7 +16,7 @@ angular.module('libraryApp')
                 var progress = $scope.progress;
                 var questionId = $scope.questionId;
                 $scope.currentTest.tests[progress].result = result;
-                if($scope.user.Name != 'yury'){
+                if($scope.user.Name != 'yury_admin'){
                     $scope.currentTest.tests[progress].isDone = true;
                 }
                 helper.storage.set("currentTest" + $scope.user.Id, $scope.currentTest);
@@ -59,7 +59,7 @@ angular.module('libraryApp')
           var allTests = angular.copy($scope.allTests.tests);
           var prevTests = $scope.prevTests;
           var possible = [];
-          if($scope.user.Name != 'yury'){
+          if($scope.user.Name != 'yury_admin'){
               angular.forEach(prevTests, function (prevTest) {
                   for (var i = 0; i < allTests.length; i++) {
                       if (prevTest.TestId == allTests[i].id) {
@@ -149,7 +149,7 @@ angular.module('libraryApp')
 
       var redirectToMainResult = function (data) {
           if (!$scope.currentTest.isDone) {
-              if($scope.user.Name != 'yury'){
+              if($scope.user.Name != 'yury_admin'){
                   $scope.currentTest.isDone = true;
               }
               helper.storage.set("currentTest" + $scope.user.Id, $scope.currentTest);
