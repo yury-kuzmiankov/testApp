@@ -136,6 +136,14 @@ sum input{
     width: 50px;
 }
 
+random .line{
+    text-align: center;
+} 
+ 
+random .description{
+    padding-top: 10px;
+}
+
 random span{
     padding-right: 10px;
     font-size: 20px;
