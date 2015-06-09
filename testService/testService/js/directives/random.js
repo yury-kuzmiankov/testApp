@@ -42,6 +42,7 @@ angular.module('libraryApp')
                     $scope.isShowAnswer = false;
                     this.results += this.answer == this.sumArray() ? 1 : 0;
                     this.progress++;
+                    $scope.answer = "";
                     switch (this.progress) {
                         case 1:
                             {
