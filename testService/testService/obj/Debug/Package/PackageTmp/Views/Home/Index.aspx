@@ -19,6 +19,8 @@
     <script type="text/javascript" src="components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="components/angular-resource/angular-resource.min.js"></script>
     <script type="text/javascript" src="components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    <script src="components/angular-touch/angular-touch.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="components/d3/d3.js"></script>
     <script type="text/javascript" src="components/nvd3/nv.d3.js"></script>
     <script type="text/javascript" src="components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
@@ -45,9 +47,9 @@
 		    <div class="collapse navbar-collapse" id="navbar-collapse2" >
 			    <ul class="nav navbar-nav navbar-right">
                     <li><a href="#/" >Главная</a></li>
-                    <li ng-if="isAuth"><a href="#/testresult">Результаты</a></li>
-                    <li ng-if="isAuth"><a href="#/users">Пользователи</a></li>
-                    <li ng-if="isAuth"><a href="#/departments">Отделы</a></li>
+                    <li ng-if="isAuth && user.Role.Id != 2"><a href="#/testresult">Результаты</a></li>
+                    <li ng-if="isAuth && user.Role.Id == 1"><a href="#/users">Пользователи</a></li>
+                    <li ng-if="isAuth && user.Role.Id == 1"><a href="#/departments">Отделы</a></li>
 				    <li ng-if="!isAuth"><a href="javascript:void(0);" role="button" data-toggle="modal" ng-click="login()">Войти</a></li>
                     <li ng-if="!isAuth"><a href="javascript:void(0);" ng-click="openregister()">Регистрация</a></li>
                     <li ng-if="isAuth"><a href="javascript:void(0);" ng-click="logout()">Выйти</a></li>

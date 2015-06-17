@@ -25,6 +25,7 @@ angular.module('libraryApp')
           if ($scope.user) {
               $scope.isAuth = true;
               $scope.currentTest = helper.storage.get("currentTest" + $scope.user.Id);
+              helper.storage.set("currentTest" + $scope.user.Id, null);
           } else {
               $scope.isAuth = false;
               $scope.currentTest = null;

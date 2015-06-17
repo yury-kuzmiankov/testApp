@@ -3,8 +3,11 @@
     <div class="panel-body">
         <span class="text-success" ng-bind="activeBlock.first" ng-show="!isShowAnswer"></span>
         <span class="text-success" ng-bind="activeBlock.second" ng-show="!isShowAnswer"></span>
-        <input type="text"  ng-model="answer" ng-show="isShowAnswer" placeholder="Введите число…" autofocus/>
+        <div class="inputwrap">
+            <input type="text"  class="form-control" ng-model="answer" ng-show="isShowAnswer" placeholder="Введите число…" autofocus/>
+        </div>
         <div class="doneInstruction" ng-show="isShowAnswer">Введите суммарное число ошибок, после чего нажмите [OK]</div>
+        <hr>
         <a class="btn btn-lg btn-success" ng-show="isShowAnswer" ng-bind="question.controlTitle" ng-click="handleResults()" ng-href="{{nextaction}}"></a>
     </div>
 </div>

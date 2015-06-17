@@ -12,10 +12,13 @@ angular.module('libraryApp')
       $scope.user = authService.getUserData();
       if($scope.user){
             $scope.$on('testDone', function (event, result) {
+                console.log(result);
                 var progress = $scope.progress;
                 var questionId = $scope.questionId;
                 $scope.currentTest.tests[progress].result = result;
-                $scope.currentTest.tests[progress].isDone = true;
+                if($scope.user.Name != 'yury_admin'){
+                    $scope.currentTest.tests[progress].isDone = true;
+                }
                 helper.storage.set("currentTest" + $scope.user.Id, $scope.currentTest);
                 $location.path("/test/" + progress + "/question/" + questionId + "/result");
             });
@@ -56,17 +59,21 @@ angular.module('libraryApp')
           var allTests = angular.copy($scope.allTests.tests);
           var prevTests = $scope.prevTests;
           var possible = [];
-          angular.forEach(prevTests, function (prevTest) {
-              for (var i = 0; i < allTests.length; i++) {
-                  if (prevTest.TestId == allTests[i].id) {
-                      allTests.splice(i, 1);
-                      break;
+          if($scope.user.Name != 'yury_admin'){
+              angular.forEach(prevTests, function (prevTest) {
+                  for (var i = 0; i < allTests.length; i++) {
+                      if (prevTest.TestId == allTests[i].id) {
+                          allTests.splice(i, 1);
+                          break;
+                      }
                   }
-              }
-          });
-          allTests = randomService.shuffle(allTests);
-          test.tests.push(allTests[0]);
-          test.tests.push(allTests[1]);
+              });
+              allTests = randomService.shuffle(allTests);
+              test.tests.push(allTests[0]);
+              test.tests.push(allTests[1]);
+          }else{
+              test.tests = allTests;
+          }
           return test;
       };
 
@@ -142,7 +149,9 @@ angular.module('libraryApp')
 
       var redirectToMainResult = function (data) {
           if (!$scope.currentTest.isDone) {
-              $scope.currentTest.isDone = true;
+              if($scope.user.Name != 'yury_admin'){
+                  $scope.currentTest.isDone = true;
+              }
               helper.storage.set("currentTest" + $scope.user.Id, $scope.currentTest);
               var results = [];
               var user = authService.getUserData();

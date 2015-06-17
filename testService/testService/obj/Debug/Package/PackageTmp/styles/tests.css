@@ -1,3 +1,7 @@
+.inputwrap{
+    display: inline-block;
+    width: 200px;
+}
 /* colors directive */
 colors ul li{
 	display: inline-block;
@@ -132,6 +136,14 @@ sum input{
     width: 50px;
 }
 
+random .line{
+    text-align: center;
+} 
+ 
+random .description{
+    padding-top: 10px;
+}
+
 random span{
     padding-right: 10px;
     font-size: 20px;
@@ -154,8 +166,8 @@ maze table{
 }
 
 maze table td{
-	width: 30px;
-	height: 30px;
+	width: 21px;
+	height: 21px;
 }
 
 maze .circle{
@@ -163,25 +175,61 @@ maze .circle{
 	top : 0;
 	left : 0;
 	display: inline-block;
-	width: 15px;
-	height: 15px;
+	width: 7px;
+	height: 7px;
 	background-color: red;
-	transition: all 0.08s;
 	cursor: pointer;
+}
+
+maze .squares{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	padding: 0;
+	list-style: none;
+	margin: 0;
+}
+maze .square{
+	position: relative;
+	left: -14px;
+	height: 28px;
+	width: 28px;
+	background: #000;
+}
+
+maze .square:nth-child(1){
+	top: 107px;
+ }
+
+maze .square:nth-child(2){
+	top: 139px;
+}
+
+maze .square:nth-child(3){
+	top: 172px;
+}
+
+maze .square:nth-child(4){
+	top: 202px;
+}
+
+maze .path td{
+	width: 60px;
+	height: 60px;
+}
+
+maze .path .circle{
+	width: 18px;
+	height: 18px;
+}
+
+maze table.active .circle{
+	position: relative;
 }
 
 words textarea{
     width: 100%;
     height: 200px;
-}
-
-maze .path td{
-	width: 50px;
-	height: 50px;
-}
-
-maze table.active .circle{
-	position: fixed;
 }
 
 strings .text-success{

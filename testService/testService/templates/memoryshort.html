@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading" ng-show="!showAnswer">Вам необходимо запомнить как можно больше образов</div>
+  <div class="panel-heading" ng-show="showAnswer">Запишите образы в таблицу</div>
+  <div class="panel-body">
+    <img ng-show="!showAnswer" src="images/memoryshort.jpg"/>
+      <hr>
+    <table ng-show="showAnswer">
+      <tr ng-repeat="row in resultArray track by $index">
+          <td ng-repeat="cell in row track by $index">
+              <input type="text" ng-model="cell.value"/>
+          </td>
+      </tr>
+    </table>
+      <hr>
+      <a class="btn btn-lg btn-success" ng-show="showAnswer" ng-click="handleResults()">Закончить</a>
+  </div>
+</div>

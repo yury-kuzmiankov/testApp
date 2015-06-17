@@ -42,6 +42,18 @@
 				<div ng-switch-when="strings">
 					<strings question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></strings>
 				</div>
+                <div ng-switch-when="place_digits">
+                    <placedigits question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></placedigits>
+                </div>
+                <div ng-switch-when="memorydigits">
+                    <memorydigits question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></memorydigits>
+                </div>
+                <div ng-switch-when="memoryshort">
+                    <memoryshort question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></memoryshort>
+                </div>
+                <div ng-switch-when="digitsquare">
+                    <digitsquare question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></digitsquare>
+                </div>
 			</div>
 		</div>
 	</div>

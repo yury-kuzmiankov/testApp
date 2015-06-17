@@ -29,7 +29,13 @@ angular.module('libraryApp')
                       { name: 'Дата', field: 'Timestamp',  type: 'date', width:'10%', cellFilter: 'date:"HH:MM dd-MM-yyyy"', enableCellEdit: false}
                   ]
               };
-              testFactory.getTestsDetail().then(function (data) {
+              var service = null;
+              if(user.Role.Id == 1){
+                  service = testFactory.getTestsDetail()
+              }else{
+                  service = testFactory.getTestsByDepartment(user.department.Id);
+              }
+              service.then(function (data) {
                   var re = /-?\d+/;
                   data.forEach( function( row ){
                       var m = re.exec(row.Timestamp);

@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Вам необходимо отсортировать предъявленные числа по возрастанию и записать в таблицу</div>
+  <div class="panel-body">
+    <table class="data">
+      <tr ng-repeat="row in question.options">
+        <td ng-repeat="cell in row track by $index" ng-bind="cell"></td>
+      </tr>
+    </table>
+      <hr>
+    <table>
+      <tr ng-repeat="row in resultArray track by $index">
+          <td ng-repeat="cell in row track by $index">
+              <input type="text" ng-model="cell.value"/>
+          </td>
+      </tr>
+    </table>
+      <hr>
+      <a class="btn btn-lg btn-success" ng-click="handleResults()">Закончить</a>
+  </div>
+</div>

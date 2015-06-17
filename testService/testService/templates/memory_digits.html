@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading" ng-show="!showAnswer">Вам необходимо запомнить как можно больше чисел</div>
+  <div class="panel-heading" ng-show="showAnswer">Запишите числа в таблицу</div>
+  <div class="panel-body">
+    <table class="data" ng-show="!showAnswer">
+      <tr ng-repeat="row in question.options">
+        <td ng-repeat="cell in row track by $index" ng-bind="cell"></td>
+      </tr>
+    </table>
+      <hr>
+    <table ng-show="showAnswer">
+      <tr ng-repeat="row in resultArray track by $index">
+          <td ng-repeat="cell in row track by $index">
+              <input type="text" ng-model="cell.value"/>
+          </td>
+      </tr>
+    </table>
+      <hr>
+      <a class="btn btn-lg btn-success" ng-show="showAnswer" ng-click="handleResults()">Закончить</a>
+  </div>
+</div>

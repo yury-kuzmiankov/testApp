@@ -241,6 +241,38 @@ questions span{
 	display: block;
 }
 
+placedigits table,
+memorydigits table,
+memoryshort table,
+digitsquare table{
+    margin: 0 auto;
+}
+
+placedigits table.data td,
+memorydigits table.data td,
+memoryshort table.data td,
+digitsquare table.data td{
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+placedigits input,
+memorydigits input,
+memoryshort input{
+    width: 68px;
+    height: 42px;
+    text-align: center;
+}
+
+digitsquare table.data td.selected{
+    border: 3px solid #4285f4;
+    border-radius: 5px;
+}
+
+
+
 nvd3-pie-chart{
 	display: block;
 }

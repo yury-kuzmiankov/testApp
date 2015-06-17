@@ -10,7 +10,7 @@
  */
 angular
   .module('libraryApp', [
-    'ngCookies', 'ngResource', 'ngRoute', 'nvd3ChartDirectives', 'ui.bootstrap', 'ui.grid', 'ui.grid.edit'
+    'ngCookies', 'ngResource','ngAnimate', 'ngTouch', 'ngRoute', 'nvd3ChartDirectives', 'ui.bootstrap', 'ui.grid', 'ui.grid.edit'
   ])
   .config(function ($routeProvider, $provide) {
       $provide.constant('appConfig', {

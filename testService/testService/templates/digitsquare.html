@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Вам необходимо за выделить в числовом ряду числа, отсутствующие в квадрате</div>
+  <div class="panel-body">
+    <table class="data">
+      <tr ng-repeat="row in question.options">
+        <td ng-repeat="cell in row track by $index" ng-bind="cell"></td>
+      </tr>
+    </table>
+      <hr>
+    <div class="doneInstruction">Для выделения, кликните левой кнопкой мыши.</div>
+    <table class="data">
+      <tr ng-repeat="row in resultArray track by $index">
+          <td ng-repeat="cell in row track by $index" ng-click="selectCell()" ng-class="cell.isSelected ? 'selected' : ''"
+              ng-bind="cell.content">
+          </td>
+      </tr>
+    </table>
+      <hr>
+      <a class="btn btn-lg btn-success" ng-click="handleResults()">Закончить</a>
+  </div>
+</div>

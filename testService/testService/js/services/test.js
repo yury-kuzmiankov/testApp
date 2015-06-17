@@ -39,7 +39,7 @@ angular.module('libraryApp')
           getTestsByDepartment: function () {
               var deferred = $q.defer();
               var user = authService.getUserData();
-              $http.get("/test/getTestsByUser/" + user.department.Id).then(function (result) {
+              $http.get("/test/getTestsByDepartment/" + user.department.Id).then(function (result) {
                   deferred.resolve(result.data);
               });
               return deferred.promise;

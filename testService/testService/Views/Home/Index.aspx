@@ -26,6 +26,8 @@
     <script type="text/javascript" src="components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
     <script src="components/angular-bootstrap/ui-bootstrap.min.js" type="text/javascript"></script>
     <script src="components/angular-ui-grid/ui-grid.min.js" type="text/javascript"></script>
+     <script src="components/underscore/underscore-min.js" type="text/javascript"></script>
+
 </head>
 <body>
     <div ng-controller="AppCtrl"></div>
@@ -97,5 +99,9 @@
     <script src="js/directives/words.js"></script>
     <script src="js/directives/strings.js"></script>
     <script src="js/directives/questions.js"></script>
+    <script src="js/directives/place_digits.js"></script>
+    <script src="js/directives/memory_digits.js"></script>
+    <script src="js/directives/memoryshort.js"></script>
+    <script src="js/directives/digitsquare.js"></script>
 </body>
 </html>
