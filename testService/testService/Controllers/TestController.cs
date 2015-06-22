@@ -27,6 +27,13 @@ namespace testService.Controllers
             return Json(tests, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult getTestResultsByUser(int id)
+        {
+            TestService service = new TestService();
+            List<Test> tests = service.getTestResultsByUser(id);
+            return Json(tests, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult getTests()
         {
             TestService service = new TestService();

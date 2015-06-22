@@ -49,6 +49,54 @@ namespace testService.Services
             return tests;
         }
 
+        public List<Test> getTestResultsByUser(int id)
+        {
+            List<Test> tests = new List<Test>();
+            SqlConnection conn = new SqlConnection(path);
+            string query = "SELECT result.fail, result.testId, result.neutral, result.correct, result.[timestamp], result.isDone, result.result, result.timeSpent, result.try, users.id AS userId, users.lastName, department.id, department.name  FROM result INNER JOIN users ON result.userID = users.id INNER JOIN department ON users.department = department.id WHERE (users.id = @id) ORDER BY result.[timestamp] DESC";
+            try
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        tests.Add(new Test()
+                        {
+
+                            Fail = dataReader.GetInt32(0),
+                            TestId = dataReader.GetInt32(1),
+                            Neutral = dataReader.GetInt32(2),
+                            Correct = dataReader.GetInt32(3),
+                            Timestamp = dataReader.GetDateTime(4),
+                            Result = dataReader.GetString(6),
+                            TimeSpend = dataReader.GetInt32(7),
+                            Try = dataReader.GetInt32(8),
+                            user = new User()
+                            {
+                                Id = dataReader.GetInt32(9),
+                                LastName = dataReader.GetString(10),
+                                department = new Department()
+                                {
+                                    Id = dataReader.GetInt32(11),
+                                    Name = dataReader.GetString(12),
+
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+            catch (Exception e) { throw e; }
+            finally
+            {
+                conn.Close();
+            }
+            return tests;
+        }
+
         public List<Test> getTestsByDepartment(int id)
         {
             List<Test> tests = new List<Test>();

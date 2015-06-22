@@ -37,7 +37,7 @@
 					<questions question="question" nextaction="/test/{{progress}}/question/{{questionId}}/result"></questions>
 				</div>
                 <div ng-switch-when="mistake">
-                    <mistake question="question" nextaction="/test/{{progress}}/question/{{questionId}}/result"></mistake>
+                    <mistake question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></mistake>
                 </div>
 				<div ng-switch-when="strings">
 					<strings question="question" nextaction="#/test/{{progress}}/question/{{questionId}}/result"></strings>

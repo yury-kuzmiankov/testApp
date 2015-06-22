@@ -26,6 +26,14 @@ namespace testService.Controllers
             List<User> users = service.getUserById(id);
             return Json(users, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult getUsersByDepartment(int id)
+        {
+            UserService service = new UserService();
+            List<User> users = service.getUsersByDepartment(id);
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult login(User userIn)
         {

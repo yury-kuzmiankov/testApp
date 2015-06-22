@@ -62,6 +62,50 @@ namespace testService.Services
             return users;
         }
 
+        public List<User> getUsersByDepartment(int id)
+        {
+            List<User> users = new List<User>();
+            SqlConnection conn = new SqlConnection(path);
+            string query = "SELECT users.id, users.name, users.firstName, users.lastName, role.id AS roleId, role.name AS roleName, department.id AS depId, department.name AS depName FROM users INNER JOIN role ON users.role = role.id INNER JOIN department ON department.id = users.department  where (department.id = @id)  ORDER BY users.lastName ASC";
+            try
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        users.Add(new User()
+                        {
+
+                            Id = dataReader.GetInt32(0),
+                            Name = dataReader.GetString(1),
+                            FirstName = dataReader.GetString(2),
+                            LastName = dataReader.GetString(3),
+                            Role = new Role()
+                            {
+                                Id = dataReader.GetInt32(4),
+                                Name = dataReader.GetString(5)
+                            },
+                            department = new Department()
+                            {
+                                Id = dataReader.GetInt32(6),
+                                Name = dataReader.GetString(7)
+                            }
+                        });
+                    }
+                }
+            }
+            catch (Exception e) { throw e; }
+            finally
+            {
+                conn.Close();
+            }
+
+            return users;
+        }
+
         public List<User> getUserById(string id)
         {
             List<User> users = new List<User>();

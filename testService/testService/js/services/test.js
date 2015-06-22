@@ -36,6 +36,14 @@ angular.module('libraryApp')
               return this.prevTests;
           },
 
+          getResultsByUser: function (id) {
+              var deferred = $q.defer();
+              $http.get("/test/getTestResultsByUser/" + id).then(function (result) {
+                  deferred.resolve(result.data);
+              });
+              return deferred.promise;
+          },
+
           getTestsByDepartment: function () {
               var deferred = $q.defer();
               var user = authService.getUserData();
@@ -52,6 +60,8 @@ angular.module('libraryApp')
               });
               return deferred.promise;
           },
+
+
 
           saveTestsResults: function (data) {
               return $http({
@@ -80,6 +90,14 @@ angular.module('libraryApp')
           getUsers: function () {
               var deferred = $q.defer();
               $http.get("/user").then(function (result) {
+                  deferred.resolve(result.data);
+              });
+              return deferred.promise;
+          },
+
+          getUsersByDepartment: function (id) {
+              var deferred = $q.defer();
+              $http.get("/user/getUsersByDepartment/" + id).then(function (result) {
                   deferred.resolve(result.data);
               });
               return deferred.promise;
