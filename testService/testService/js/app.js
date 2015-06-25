@@ -60,14 +60,7 @@ angular
       .otherwise({
           redirectTo: '/'
       });
-  }).run([
-      '$rootScope',
-      '$q',
-      'authService',
-      function ($rootScope, $q, authService) {
-          return $q.all([authService.checkAuthN()]);
-      }
-    ]).controller('AppCtrl', [
+  }).controller('AppCtrl', [
       '$rootScope',
       '$scope',
       '$q',

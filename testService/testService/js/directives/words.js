@@ -32,11 +32,30 @@ angular.module('libraryApp')
                 $scope.initTimer();
 
                 $scope.preparePhrase = function(){
-                    $scope.line = randomService.getPhraseUpper(randomService.getRandomInt(10, 40));
+                    var lines = [];
+                    var counter = 0;
                     $scope.array =  randomService.shuffle($scope.array);
-                    angular.forEach($scope.array, function(value){
-                        $scope.line = $scope.line + value + randomService.getPhraseUpper(randomService.getRandomInt(10, 40));
-                    });
+                    $scope.line = '';
+                    for(var i = 0; i < 10; i++){
+                        var line = randomService.getPhraseUpper(77);
+                        var max = i < 5 ? 3 : 2;
+                        var j = 0;
+                        while(j < max){
+                            var posFrom = Math.floor(j * 77/max);
+                            var posEnd = Math.floor(77/(max - j));
+                            var pos = randomService.getRandomInt(posFrom, posEnd);
+                            line = line.substr(0, pos) + $scope.array[counter] + line.substr(pos + $scope.array[counter].length, line.length);
+                            counter++;
+                            j++;
+                        }
+                        if(line.length < 77){
+                            line += randomService.getPhraseUpper(77 - line.length);
+                        }
+                        else{
+                            line = line.substr(0, 77);
+                        }
+                        $scope.line += line + '\r\n';
+                    }
                 };
                 $scope.preparePhrase();
 
